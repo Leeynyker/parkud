@@ -1,0 +1,97 @@
+/* Form header */
+.form .form-header{
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.form .form-header .titulo{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+.form .form-header .titulo :nth-child(2){
+    color: var(--color-principal);
+}
+
+.form .form-header .titulo>span{
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.form .form-header .links{
+    display: grid;
+    width: max-content;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    align-content: center;
+}
+
+.form .form-header .links a{
+    text-decoration: none;
+}
+
+.form .form-header .links>.current>a{
+    pointer-events: none;
+}
+
+.form .form-header .links .current>a{
+    color: var(--color-principal);
+    font-weight: 900;
+}
+
+/* Form content */
+
+.form .form-content{
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px 30px;
+}
+
+.form .form-content .form-input{
+    position: relative;
+    border-bottom: 2px solid var(--color-principal);
+    margin: 5px 0;
+}
+
+.form .form-content .form-input>input{
+    width: 100%;
+    height: var(--input-height);
+    border: none;
+    font-size: inherit;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+.form .form-content .form-input>label{
+    position: absolute;
+    width: 30px;
+    right: 0;
+    top: 15px;
+    color: var(--font-color-principal);
+}
+
+.form .form-content button{
+    width: 80%;
+    height: var(--input-height);
+    margin: 35px auto 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 20px;
+    letter-spacing: .5px;
+    color: var(--blanco);
+    box-shadow: 0px 5px 20px -5px var(--color-principal);
+    transition: .2s;
+}
+
+.form .form-content button:hover{
+    filter: brightness(1.12);
+}
+
+.form .forgot{
+    text-align: center;
+    color: inherit;
+    font-size: 14px;
+}
