@@ -21,8 +21,8 @@ export default function RegisterForm({txtUser, txtPass}) {
         <h3>Registro</h3>
         <div className="divided">
           <div className="form-input">
-            <label htmlFor="txtEmail"><FontAwesomeIcon icon={faUser} /></label>
-            <input ref={txtUser} placeholder="Nombre" id="txtEmail" type="text" />
+            <label htmlFor="txtNombre"><FontAwesomeIcon icon={faUser} /></label>
+            <input ref={txtUser} placeholder="Nombre" id="txtNombre" type="text" />
           </div>
           <div className="form-input">
             <label htmlFor="txtApellido"><FontAwesomeIcon icon={faUser} /></label>
