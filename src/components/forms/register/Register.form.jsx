@@ -25,13 +25,13 @@ export default function RegisterForm({txtUser, txtPass}) {
             <input ref={txtUser} placeholder="Nombre" id="txtEmail" type="text" />
           </div>
           <div className="form-input">
-            <label htmlFor="txtPass"><FontAwesomeIcon icon={faUser} /></label>
-            <input ref={txtPass} placeholder="Apellido" id="txtPass" type="text" />
+            <label htmlFor="txtApellido"><FontAwesomeIcon icon={faUser} /></label>
+            <input ref={txtPass} placeholder="Apellido" id="txtApellido" type="text" />
           </div>
         </div>
         <div className="form-input">
-          <label htmlFor="txtPass"><FontAwesomeIcon icon={faEnvelope} /></label>
-          <input ref={txtPass} placeholder="Correo" id="txtPass" type="email" />
+          <label htmlFor="txtEmail"><FontAwesomeIcon icon={faEnvelope} /></label>
+          <input ref={txtPass} placeholder="Correo" id="txtEmail" type="email" />
         </div>
         <div className="form-input">
           <label htmlFor="txtPass"><FontAwesomeIcon icon={faLock} /></label>
