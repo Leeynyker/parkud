@@ -6,6 +6,7 @@
   --color-bg: #f6f6f6;
   --font-color-principal: #5f5f5f;
   --blanco: #fff;
+  --negro: #000;
 
   --input-height: 45px;
 }
@@ -16,9 +17,17 @@ body {
   font-family: 'Mulish', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+@media screen and (max-width: 768px){
+  body{
+    font-size: 14px;
+  }
 }
