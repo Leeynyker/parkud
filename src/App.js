@@ -2,7 +2,7 @@ import './App.css';
 import { Route } from 'wouter';
 import Login from './pages/login/Login';
 import RegisterForm from './components/forms/register/Register.form';
-import Register from './pages/register/Register';
+import Register from './pages/register/register';
 
 function App() {
   return (
