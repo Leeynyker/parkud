@@ -12,6 +12,8 @@ export default function Login() {
     e.prevent.default();
     const user = txtUser.current.value;
     const pass = txtPass.current.value;
+    console.log(user);
+    console.log(pass);
   }
 
   return (
