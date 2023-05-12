@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Route path='/home'></Route>
-      <Route path='/login'><Login /></Route>
+      <Route path='/login'>
+        <Login />
+      </Route>
       <Route path='/register'><Register /></Route>
     </>
   );

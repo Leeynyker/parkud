@@ -1,0 +1,1 @@
+export const HOST = 'https://documenter.getpostman.com/view/19607651/2s93eVXE2P';
