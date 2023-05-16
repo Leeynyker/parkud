@@ -1,0 +1,15 @@
+.parkud-points{
+  display: grid;
+  grid-template-columns: 40% 60%;
+  text-align: center;
+  place-content: center;
+  color: var(--negro);
+  height: 30px;
+  background-color: var(--gris-claro);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.parkud-points svg{
+  margin: auto 5px;
+}

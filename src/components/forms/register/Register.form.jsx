@@ -9,7 +9,7 @@ export default function RegisterForm({txtUser, txtPass}) {
   return (
     <div className='form'>
       <div className="form-header">
-        <div className="titulo">
+        <div className="parkud">
           <h2>PAR-</h2><h2>KUD</h2>
         </div>
         <div className="links">

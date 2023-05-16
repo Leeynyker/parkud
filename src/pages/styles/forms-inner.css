@@ -6,21 +6,6 @@
     align-content: center;
 }
 
-.form .form-header .titulo{
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-}
-.form .form-header .titulo :nth-child(2){
-    color: var(--color-principal);
-}
-
-.form .form-header .titulo>span{
-    font-size: 20px;
-    font-weight: bolder;
-    letter-spacing: 1px;
-}
-
 .form .form-header .links{
     display: grid;
     width: max-content;

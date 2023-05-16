@@ -16,3 +16,19 @@
 .degraded-black{
   background: linear-gradient(to top, var(--negro), var(--font-color-principal));
 }
+
+.parkud{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.parkud :nth-child(2){
+  color: var(--color-principal);
+}
+
+.parkud>span{
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+}
