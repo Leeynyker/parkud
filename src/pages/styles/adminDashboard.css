@@ -1,0 +1,4 @@
+.dashboard-body{
+  display: grid;
+  grid-template-columns: 200px calc(100svw - 250px);
+}

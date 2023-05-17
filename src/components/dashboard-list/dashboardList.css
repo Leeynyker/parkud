@@ -1,0 +1,55 @@
+.dashboard-list{
+  display: flex;
+  flex-direction: column;
+  width: calc((100vw - 250px)*.9);
+  min-height: 80svh;
+}
+
+.dashboard-list .row{
+  display: flex;
+  background-color: var(--gris-claro);
+  border-top: 1px solid var(--gris-claro);
+  border-top: 1px solid var(--gris-claro);
+}
+
+.dashboard-list .row>span, .dashboard-list .row>h4{
+  display: block;
+  flex: 2;
+  margin: 5px 0;
+  padding: 5px 15px;
+}
+.dashboard-list .row>.short{
+  flex: 1;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.dashboard-list .row>h4{
+  text-transform: capitalize;
+}
+
+.dashboard-list .dashboard-content .row{
+  background-color: var(--blanco);
+}
+
+.dashboard-list .dashboard-content .row .separated{
+  display: flex;
+  justify-content: space-around;
+}
+
+.dashboard-list .dashboard-content .row .separated svg{
+  cursor: pointer;
+}
+
+button.add-user{
+  width: fit-content;
+  margin: 0px 0px 20px auto;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 16px;
+  background-color: var(--color-secondary);
+  color: var(--blanco);
+  cursor: pointer;
+}
