@@ -14,19 +14,21 @@
 
 .dashboard-list .row>span, .dashboard-list .row>h4{
   display: block;
-  flex: 2;
+  flex: 1;
   margin: 5px 0;
   padding: 5px 15px;
 }
-.dashboard-list .row>.short{
-  flex: 1;
+.dashboard-list .row :last-child{
   text-align: center;
-  text-transform: capitalize;
+}
+.dashboard-list .row :first-child, .dashboard-list .row :nth-child(2){
+  flex: 2;
 }
 
 .dashboard-list .row>h4{
   text-transform: capitalize;
 }
+
 
 .dashboard-list .dashboard-content .row{
   background-color: var(--blanco);

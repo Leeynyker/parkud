@@ -11,7 +11,7 @@ export default function Navbar() {
     <div className="options">
       <Link to='/'>Estadísticas</Link>
       <Link to='/'>Reportes</Link>
-      <Link to='/'>Administración</Link>
+      <Link to='/admin/users'>Administración</Link>
       <div className="user-options">
         <ParkudPoints />
         <button className="user-icon">

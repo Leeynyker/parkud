@@ -17,8 +17,8 @@ function App() {
       <Route path='/register'>
         <Register />
       </Route>
-      <Route path='/admin/users'>
-        <AdminDashboard />
+      <Route path='/dashboard/:role/:toShow'>
+        {params => <AdminDashboard role={params.role} toShow={params.toShow}/>}
       </Route>
     </>
   );
