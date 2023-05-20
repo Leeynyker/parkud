@@ -5,6 +5,10 @@ const sidebarOptions = Object.freeze({
     {nombre: 'mi parqueadero', url:'my'},
     {nombre: 'parqueaderos', url:'parkings'},
     {nombre: 'roles', url:'roles'},
+  ],
+  staff:[
+    {nombre: 'usuarios', url: 'users'},
+    {nombre: 'mi parqueadero', url:'my'}
   ] 
 })
 
