@@ -9,7 +9,7 @@ const usersTest = {
     ['Albert Flores', 'correo@correo.com', 'rol', '-'],
     ['Albert Flores', 'correo@correo.com', 'rol', '-'],
   ],
-  users: [
+  user: [
     ['Albert Flores', 'correo@correo.com', '0', 'ABC123'],
     ['Albert Flores', 'correo@correo.com', '0', 'ABC123'],
     ['Albert Flores', 'correo@correo.com', '0', 'ABC123'],
@@ -23,6 +23,14 @@ const usersTest = {
     ['Albert Flores', 'A1', 'ABC123', '$6000/h'],
     ['Albert Flores', 'A1', 'ABC123', '$6000/h'],
     ['Albert Flores', 'A1', 'ABC123', '$6000/h'],
+  ],
+  parkings: [
+    ['Parquedero 1', '100', '80%', '$6000/h'],
+    ['Parquedero 2', '100', '80%', '$6000/h'],
+    ['Parquedero 3', '100', '80%', '$6000/h'],
+    ['Parquedero 4', '100', '80%', '$6000/h'],
+    ['Parquedero 5', '100', '80%', '$6000/h'],
+    ['Parquedero 6', '100', '80%', '$6000/h']
   ]
 }
 
@@ -36,7 +44,7 @@ const userColumns = {
     'parqueadero',
     'acciones'
   ],
-  users: [
+  user: [
     'nombre',
     'correo',
     'puntos',
@@ -49,13 +57,21 @@ const userColumns = {
     'placa',
     'tarifa',
     'acciones'
+  ],
+  parkings: [
+    'nombre',
+    'capacidad',
+    'ocupación',
+    'tarifa',
+    'acciones'
   ]
 }
 
 const userActions = {
   staff: ['editar', 'eliminar'],
-  users: ['editar', 'eliminar'],
-  my: ['editar']
+  user: ['editar', 'eliminar'],
+  my: ['editar'],
+  parkings: ['editar', 'eliminar']
 }
 
 

@@ -1,4 +1,5 @@
 export const tempCards = [{
+  id: '1',
   nombre: 'Parqueadero 1',
   direccion: 'Carrera 8 #40a-60',
   cupos: 54,
@@ -7,6 +8,7 @@ export const tempCards = [{
   cierre: '10pm',
 },
 {
+  id: '2',
   nombre: 'Parqueadero 2',
   direccion: 'Carrera 8 #40a-60',
   cupos: 32,

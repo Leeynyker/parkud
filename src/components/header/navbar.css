@@ -1,4 +1,4 @@
-header{
+.parkud-header{
   width: 100%;
   height: var(--header-height);
   display: flex;
@@ -8,7 +8,7 @@ header{
   box-sizing: border-box;
 }
 
-header .options{
+.parkud-header .options{
   display: flex;
   justify-content: space-between;
   gap: 5px;
@@ -17,26 +17,27 @@ header .options{
   width: 500px;
 }
 
-header .options a{
+.parkud-header .options a{
   display: block;
   width: fit-content;
   height: 30px;
   text-decoration: none;
   color: inherit;
   line-height: 30px;
+  text-transform: capitalize;
 }
-header .options a:visited{
+.parkud-header .options a:visited{
   color: inherit;
 }
 
-header .user-options{
+.parkud-header .user-options{
   width: fit-content;
   display: flex;
   place-items: center;
   gap: 25px;
 }
 
-header .user-options .user-icon{
+.parkud-header .user-options .user-icon{
   width: 40px;
   height: 40px;
   border-radius: 20px;

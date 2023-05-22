@@ -14,6 +14,10 @@
     align-content: center;
 }
 
+.form .form-header .links h4{
+    margin-top: 0;
+}
+
 .form .form-header .links a{
     text-decoration: none;
 }

@@ -1,11 +1,15 @@
 import { createContext, useState } from "react";
 
-export default function LoggedContext({ children }){
-    const [loggedMail, setLoggedMail] = useState(null);
-    const [loggedRole, setLoggedRole] = useState(null);
+const LoggedContext = createContext({mail: null, role: 'user'})
+
+export function LoggedContextProvider({ children }){
+    const [mail, setMail] = useState(null);
+    const [role, setRole] = useState('admin');
     return (
-        <LoggedContext value={ {loggedMail, setLoggedMail, loggedRole, setLoggedRole} }>
+        <LoggedContext.Provider value={ {mail, setMail, role, setRole} }>
             {children}
-        </LoggedContext>
+        </LoggedContext.Provider>
     );
 }
+
+export default LoggedContext;

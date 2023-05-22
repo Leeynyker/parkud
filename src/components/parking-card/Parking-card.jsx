@@ -1,12 +1,13 @@
 import './parking-card.css';
+import { Link } from 'wouter';
 
-export default function ParkingCard({ nombre, direccion, cupos, tarifa, apertura, cierre, img, puntos = null }) {
+export default function ParkingCard({ id, nombre, direccion, cupos, tarifa, apertura, cierre, img, puntos = null }) {
 
   return (
     <div className="parking-card">
       <div className="parking-info">
         <div className="main-info">
-          <h4>{nombre}</h4>
+          <Link to={`/parking/${id}`}><h4>{nombre}</h4></Link>
           <span>{direccion}</span>
         </div>
         <span>{cupos} cupos libres</span>

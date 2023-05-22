@@ -1,15 +1,9 @@
 import { usersTest, userColumns, userActions } from "./usersTest"
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "wouter"
+import { icons } from "../icons/icons"
 import './dashboardList.css'
 
 export default function DashboardList({ toShow }) {
-
-  const iconos = {
-    editar: <FontAwesomeIcon icon={faPenToSquare} />,
-    eliminar: <FontAwesomeIcon icon={faTrashCan} />
-  }
 
   return (
     <section className="dashboard-list">
@@ -24,9 +18,9 @@ export default function DashboardList({ toShow }) {
       <div className="dashboard-content">
         {usersTest[toShow].map((element, index) =>
           <div className="row" key={`row${index}`}>
-            {element.map((value, index) => <span key={`parq${index}`}>{value}</span> )}
+            {element.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
             <span className="separated">
-              {userActions[toShow].map((accion, i) => <Link key={`icon${index},${i}`} to='#'>{iconos[accion]}</Link>)}
+              {userActions[toShow].map((accion, i) => <Link key={`icon${index},${i}`} to='#'>{icons[accion]}</Link>)}
             </span>
           </div>
         )}

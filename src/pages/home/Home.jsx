@@ -3,10 +3,10 @@ import '../styles/home.css'
 import { tempCards } from "../../util/tempCards"
 import ParkingCard from "../../components/parking-card/Parking-card"
 
-export default function HomeAdmin() {
+export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar /> 
       <div className="search-bar">
         <input type="text" />
         <button>Buscar</button>
