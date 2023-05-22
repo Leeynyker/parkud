@@ -1,7 +1,7 @@
 const sidebarOptions = Object.freeze({
   admin: [
-    {nombre: 'empleados', url:'staff'},
     {nombre: 'usuarios', url:'user'},
+    {nombre: 'empleados', url:'staff'},
     {nombre: 'parqueaderos', url:'parkings'}
   ],
   staff:[

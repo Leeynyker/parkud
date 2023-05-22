@@ -4,7 +4,7 @@ const LoggedContext = createContext({mail: null, role: 'user'})
 
 export function LoggedContextProvider({ children }){
     const [mail, setMail] = useState(null);
-    const [role, setRole] = useState('admin');
+    const [role, setRole] = useState('staff');
     return (
         <LoggedContext.Provider value={ {mail, setMail, role, setRole} }>
             {children}
