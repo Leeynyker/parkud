@@ -2,6 +2,9 @@ import { Modal, Header, Button} from "semantic-ui-react";
 import RegisterForm from "../forms/register/Register.form";
 import { useState } from "react";
 
+import '../../pages/styles/forms-inner.css';
+import '../../pages/styles/forms.css';
+
 export default function RegisterModal() {
   const [open, setOpen] = useState(false);
 
@@ -17,10 +20,11 @@ export default function RegisterModal() {
         </Header>
         <Modal.Content>
           <>
-            <RegisterForm />
+            <div className="form-container registro">
+              <RegisterForm />
+            </div>
           </>
         </Modal.Content>
     </Modal>
-
   )
 }

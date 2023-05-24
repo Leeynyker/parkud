@@ -92,6 +92,18 @@
     gap: 6%;
 }
 
+.registro {
+    width: 100%;
+    box-shadow: none;
+    display: flex;
+    height: max-content;
+}
+
+.registro .form {
+    width: 100%;
+    justify-content: flex-start;
+}
+
 @media screen and (max-width: 768px) {
     .form-container .divided{
         grid-template-columns: 100%;
