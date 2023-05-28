@@ -8,7 +8,7 @@ export default function useFetchAPI() {
   const {setToken} = useContext(LoggedContext);
 
   const registerUser = (datos) => {
-    axios.post(ENDPOINT + '/usuario/guardar', datos)
+    axios.post(ENDPOINT + '/usuario/guardar/', datos)
       .then((response) => {
         console.log(response);
       })

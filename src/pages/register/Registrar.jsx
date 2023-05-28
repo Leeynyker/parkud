@@ -28,8 +28,8 @@ export default function Register() {
         placaVehiculo: placaVehiculo.current.value,
         puntosAcumulados: 0,
         rol: {
-          rolId: 2,
-          nombreRol: 'User'
+          rolId: 1,
+          nombreRol: 'Admin'
         }
       },
       tarjetaDeCredito: [
