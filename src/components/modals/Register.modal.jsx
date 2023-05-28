@@ -1,4 +1,4 @@
-import { Modal, Header, Button} from "semantic-ui-react";
+import { Modal, Header } from "semantic-ui-react";
 import RegisterForm from "../forms/register/Register.form";
 import { useState } from "react";
 

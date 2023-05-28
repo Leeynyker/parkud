@@ -9,7 +9,7 @@ export default function Login() {
   const txtPass = useRef(null);
 
   function handleSubmit(e) {
-    e.prevent.default();
+    e.preventDefault();
     const user = txtUser.current.value;
     const pass = txtPass.current.value;
     console.log(user);

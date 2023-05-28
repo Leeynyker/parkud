@@ -9,6 +9,7 @@ export default function DashboardList({ toShow }) {
     <section className="dashboard-list">
       {/* Se ponen los encabezados de la tabla */}
       <div className="row">
+        {/* Se buscan en los títulos plantilla */}
         {userColumns[toShow].map((column, index) =>
           <h4 className="names" key={`${index}column`}>{column}</h4>
         )}

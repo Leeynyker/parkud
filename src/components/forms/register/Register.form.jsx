@@ -1,10 +1,12 @@
 import { Link } from 'wouter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faCar } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
-export default function RegisterForm({txtUser, txtPass}) {
+export default function RegisterForm({refs}) {
+
+  const {nombre, apellido, correo, contrasena, placaVehiculo} = refs;
 
   return (
     <div className='form'>
@@ -22,20 +24,24 @@ export default function RegisterForm({txtUser, txtPass}) {
         <div className="divided">
           <div className="form-input">
             <label htmlFor="txtNombre"><FontAwesomeIcon icon={faUser} /></label>
-            <input ref={txtUser} placeholder="Nombre" id="txtNombre" type="text" />
+            <input required placeholder="Nombre" id="txtNombre" type="text" ref={nombre} />
           </div>
           <div className="form-input">
             <label htmlFor="txtApellido"><FontAwesomeIcon icon={faUser} /></label>
-            <input ref={txtPass} placeholder="Apellido" id="txtApellido" type="text" />
+            <input required placeholder="Apellido" id="txtApellido" type="text" ref={apellido} />
           </div>
         </div>
         <div className="form-input">
           <label htmlFor="txtEmail"><FontAwesomeIcon icon={faEnvelope} /></label>
-          <input ref={txtPass} placeholder="Correo" id="txtEmail" type="email" />
+          <input required placeholder="Correo" id="txtEmail" type="email" ref={correo}/>
         </div>
         <div className="form-input">
           <label htmlFor="txtPass"><FontAwesomeIcon icon={faLock} /></label>
-          <input ref={txtPass} placeholder="Contraseña" id="txtPass" type="password" />
+          <input required placeholder="Contraseña" id="txtPass" type="password" autoComplete='true'ref={contrasena}/>
+        </div>
+        <div className="form-input">
+          <label htmlFor="txtPlacaVehiculo"><FontAwesomeIcon icon={faCar} /></label>
+          <input required placeholder="Placa del vehículo" id="txtPlacaVehiculo" type="text" ref={placaVehiculo}/>
         </div>
       </div>
     </div>
