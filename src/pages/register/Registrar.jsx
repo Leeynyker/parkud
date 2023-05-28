@@ -3,8 +3,7 @@ import CreditCardForm from "../../components/forms/register/CreditCard.form";
 import '../styles/forms-inner.css';
 import '../styles/forms.css';
 import { useRef } from "react";
-import { ENDPOINT } from '../../util/api';
-import axios from "axios";
+import useFetchAPI from "../../hooks/fetchAPI";
 
 export default function Register() {
 
@@ -16,6 +15,7 @@ export default function Register() {
   const vencimiento = useRef('');
   const cvc = useRef('');
   const placaVehiculo = useRef('');
+  const { registerUser } = useFetchAPI();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -41,13 +41,7 @@ export default function Register() {
       ]
     }
 
-    axios.post(ENDPOINT+'/usuario/guardar', datos)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    registerUser(datos);
   }
 
   return (
