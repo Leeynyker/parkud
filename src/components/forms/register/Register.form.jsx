@@ -4,7 +4,7 @@ import { faLock, faCar } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
-export default function RegisterForm({refs}) {
+export default function RegisterForm({refs, fromModal = false}) {
 
   const {nombre, apellido, correo, contrasena, placaVehiculo} = refs;
 
@@ -15,7 +15,7 @@ export default function RegisterForm({refs}) {
           <h2>PAR-</h2><h2>KUD</h2>
         </div>
         <div className="links">
-          <h4><Link to="/login">Iniciar sesión</Link></h4>
+          {!fromModal ? <h4><Link to="/login">Iniciar sesión</Link></h4> : null}
           <h4 className='current'><Link to="#">Registrarse</Link></h4>
         </div>
       </div>

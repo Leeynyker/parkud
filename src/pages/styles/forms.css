@@ -41,6 +41,13 @@
     color: var(--font-color-principal);
 }
 
+.vertical{
+    width: 100% !important;
+    /* display: flex !important;
+    flex-direction: column; */
+    margin-bottom: 20px;
+}
+
 .form-container .form{
     padding: 20px;
     display: flex;

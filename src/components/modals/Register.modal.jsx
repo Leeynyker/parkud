@@ -60,8 +60,8 @@ export default function RegisterModal() {
       <Modal.Content>
         <>
           <form className="form-layout" onSubmit={handleSubmit} >
-            <div className="form-container register">
-              <RegisterForm refs={{ nombre, apellido, correo, contrasena, placaVehiculo }} />
+            <div className="form-container register vertical">
+              <RegisterForm fromModal={true} refs={{ nombre, apellido, correo, contrasena, placaVehiculo }} />
               <div className="img degraded-black">
                 <CreditCardForm refs={{ numTarjeta, vencimiento, cvc }} />
               </div>
