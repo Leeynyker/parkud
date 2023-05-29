@@ -5,27 +5,63 @@ import LoggedContext from "../context/Logged.context";
 
 export default function useFetchAPI() {
 
-  const {setToken} = useContext(LoggedContext);
+  const { setToken } = useContext(LoggedContext);
 
-  const registerUser = (datos) => {
-    axios.post(ENDPOINT + '/usuario/guardar/', datos)
+  const registerUser = async (datos) => {
+    const res = await axios.post(ENDPOINT + '/usuario/guardar/', datos)
       .then((response) => {
         console.log(response);
+        if (response.status = 200) return true;
       })
       .catch((error) => {
         console.log(error);
+        return false;
       })
+    return res;
   }
 
-  const getUser = (datos) =>{
-    axios.post(ENDPOINT + '/generar-token', datos)
+  const getUser = async (datos) => {
+    return axios.post(ENDPOINT + '/generar-token', datos)
       .then((response) => {
-        setToken(response);
+        if (response.status = 200) {
+          const token = response.data.token;
+          setToken(response);
+          localStorage.setItem('token', token)
+          return true;
+        }
+        return false;
+
       })
       .catch((error) => {
         console.log(error);
+        return false
       })
   }
 
-  return { registerUser, getUser }
+  const getDataUser = async () => {
+    return axios({
+      method: "get",
+      url: ENDPOINT + '/actual-usuario',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      }
+    }).then((response) => {
+      if (response.status = 200) {
+        const correo = response.data.username;
+        const rol = response.data.rol.nombreRol;
+        const puntos = response.data.puntosAcumulados;
+        localStorage.setItem('mail', correo)
+        localStorage.setItem('role', rol)
+        localStorage.setItem('puntos', puntos)
+        return true;
+      }
+      return false;
+    })
+      .catch((error) => {
+        console.log(error);
+        return false
+      })
+  }
+
+  return { registerUser, getUser, getDataUser }
 }

@@ -2,8 +2,13 @@ import Navbar from "../../components/header/Navbar"
 import '../styles/home.css'
 import { tempCards } from "../../util/tempCards"
 import ParkingCard from "../../components/parking-card/Parking-card"
+import useFetchAPI from "../../hooks/fetchAPI"
 
 export default function Home() {
+
+  const token = localStorage.getItem('token');
+  const {getDataUser} = useFetchAPI();
+
   return (
     <>
       <Navbar /> 

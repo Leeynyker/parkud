@@ -1,10 +1,15 @@
 import { useRef } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import LoginForm from "../../components/forms/login/Login.form"
+import useFetchAPI from "../../hooks/fetchAPI";
 import '../styles/forms-inner.css';
 import '../styles/forms.css';
 
 export default function Login() {
+
+  const [location, navigate] = useLocation();
+  const {getUser, getDataUser} = useFetchAPI();
+
   const txtUser = useRef(null);
   const txtPass = useRef(null);
 
@@ -12,8 +17,21 @@ export default function Login() {
     e.preventDefault();
     const user = txtUser.current.value;
     const pass = txtPass.current.value;
-    console.log(user);
-    console.log(pass);
+    
+    const datos = {
+      username: user,
+      password: pass
+    }
+
+    getUser(datos)
+      .then((res) =>{
+        if(res){
+          getDataUser().then((r) =>{
+            navigate('/');
+          })
+        }
+      });
+
   }
 
   return (

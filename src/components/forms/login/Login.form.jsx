@@ -20,11 +20,11 @@ export default function LoginForm({txtUser, txtPass}) {
         <h3>Ingresar</h3>
         <div className="form-input">
           <label htmlFor="txtEmail"><FontAwesomeIcon icon={faUser} /></label>
-          <input ref={txtUser} placeholder="Correo" id="txtEmail" type="email" />
+          <input ref={txtUser} placeholder="Correo" id="txtEmail" type="email" required/>
         </div>
         <div className="form-input">
           <label htmlFor="txtPass"><FontAwesomeIcon icon={faLock} /></label>
-          <input ref={txtPass} placeholder="Contraseña" id="txtPass" type="password" />
+          <input ref={txtPass} placeholder="Contraseña" id="txtPass" type="password" required/>
         </div>
       </div>
     </div>

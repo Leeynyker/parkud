@@ -4,8 +4,11 @@ import '../styles/forms-inner.css';
 import '../styles/forms.css';
 import { useRef } from "react";
 import useFetchAPI from "../../hooks/fetchAPI";
+import { useLocation } from "wouter";
 
 export default function Register() {
+
+  const [location, navigate] = useLocation();
 
   const nombre = useRef('');
   const apellido = useRef('');
@@ -28,8 +31,8 @@ export default function Register() {
         placaVehiculo: placaVehiculo.current.value,
         puntosAcumulados: 0,
         rol: {
-          rolId: 1,
-          nombreRol: 'Admin'
+          rolId: 2,
+          nombreRol: 'Gerente'
         }
       },
       tarjetaDeCredito: [
@@ -41,7 +44,11 @@ export default function Register() {
       ]
     }
 
-    registerUser(datos);
+    registerUser(datos)
+      .then((r) => {
+        console.log(r);
+        if(r) navigate('/login')
+      });
   }
 
   return (

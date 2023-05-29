@@ -5,7 +5,7 @@ import { useContext } from "react";
 import LoggedContext from "../../context/Logged.context";
 
 export default function Sidebar() {
-  const {role} = useContext(LoggedContext);
+  const role = localStorage.getItem('role')
   const currentRole = sidebarOptions[role]
 
   return (

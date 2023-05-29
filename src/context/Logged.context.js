@@ -4,7 +4,7 @@ const LoggedContext = createContext({mail: null, role: 'user'})
 
 export function LoggedContextProvider({ children }){
     const [mail, setMail] = useState(null);
-    const [role, setRole] = useState('staff');
+    const [role, setRole] = useState('user');
     const [token, setToken] = useState('');
     
     return (

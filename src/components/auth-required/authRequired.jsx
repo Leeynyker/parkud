@@ -3,27 +3,27 @@ import LoggedContext from "../../context/Logged.context"
 import { Redirect } from "wouter";
 
 const validRoles = {
-  admin: 'admin',
-  staff: 'staff',
-  user: 'user'
+  admin: 'Admin',
+  gerente: 'Gerente',
+  cliente: 'Cliente'
 }
 
 function AdminRequired({ children }) {
-  const { role } = useContext(LoggedContext)
+  const role = localStorage.getItem('role')
   return (
     <>
-      {role === validRoles.admin ? children : <Redirect to='/' />}
+      {role === validRoles.admin || role === validRoles.gerente ? children : <Redirect to='/login' />}
     </>
   )
 }
 
-function StaffRequired({ children }) {
-  const { role } = useContext(LoggedContext)
+function UserRequired({ children }){
+  const role = localStorage.getItem('role')
   return (
     <>
-      {role === validRoles.admin || role === validRoles.staff ? children : <Redirect to='/' />}
+      {role === validRoles.cliente || role === validRoles.admin || role === validRoles.gerente ? children : <Redirect to='/login' />}
     </>
   )
 }
 
-export { AdminRequired, StaffRequired }
+export { AdminRequired, UserRequired }

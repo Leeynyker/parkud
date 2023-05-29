@@ -6,7 +6,7 @@ import Home from './pages/home/Home';
 import AdminDashboard from './pages/admin-dashboard/AdminDashboard'
 import ParkingLot from './pages/parking/ParkingLot';
 import { LoggedContextProvider } from './context/Logged.context';
-import { StaffRequired } from './components/auth-required/authRequired';
+import { AdminRequired, UserRequired } from './components/auth-required/authRequired';
 
 function App() {
   return (
@@ -14,7 +14,9 @@ function App() {
       <LoggedContextProvider>
 
         <Route path='/'>
-          <Home />
+          <UserRequired>
+            <Home />
+          </UserRequired>
         </Route>
         <Route path='/login'>
           <Login />
@@ -24,9 +26,9 @@ function App() {
         </Route>
         <Route path='/dashboard/:toShow'>
           {params =>
-            <StaffRequired>
+            <AdminRequired>
               <AdminDashboard toShow={params.toShow} />
-            </StaffRequired>}
+            </AdminRequired>}
         </Route>
         <Route path='/my'>
           <h1>My Page</h1>

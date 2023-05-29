@@ -4,10 +4,12 @@ import './parkudPoints.css'
 
 export default function ParkudPoints() {
 
+  const puntos = localStorage.getItem('puntos');
+
   return (
     <div className="parkud-points">
       <FontAwesomeIcon icon={faCircle} />
-      <h4>1500</h4>
+      <h4>{ puntos }</h4>
     </div>
   )
 }
