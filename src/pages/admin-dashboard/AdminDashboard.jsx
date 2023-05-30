@@ -4,11 +4,12 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import '../styles/adminDashboard.css'
 import '../styles/forms-inner.css'
 import RegisterModal from "../../components/modals/Register.modal";
-
+import { avalaibleToAdd } from "./avalaibleToAdd";
 
 
 export default function AdminDashboard( {toShow}) {
-  
+
+  const currentRole = localStorage.getItem('role');
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function AdminDashboard( {toShow}) {
         <Sidebar />
         <div className="single-element">
           <>
-            <RegisterModal />
+            {avalaibleToAdd[currentRole][toShow] ? <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} /> : null}  
             <DashboardList toShow={toShow}/>
           </>
         </div>
