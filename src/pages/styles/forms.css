@@ -126,6 +126,28 @@
     justify-content: flex-start;
 }
 
+.img {
+    border-radius: 0 20px 20px 0;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+    background-color: rgba(52, 52, 52, 0.423);
+    border-radius: 50%;
+}
+.img-park{
+    max-width: 90%;
+    max-height: 90%;
+}
 @media screen and (max-width: 768px) {
     .form-container .divided {
         grid-template-columns: 100%;
@@ -133,10 +155,6 @@
     }
 }
 
-.img {
-    border-radius: 0 20px 20px 0;
-    max-height: 100%;
-}
 
 @media screen and (max-width: 1024px) {
     .form-container {
