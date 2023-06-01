@@ -60,7 +60,7 @@ export default function Register() {
             <CreditCardForm refs={{ numTarjeta, vencimiento, cvc }} />
           </div>
         </div>
-        <button className='degraded-black'>Registrarse</button>
+        <button style={{marginTop: '15px'}} className='degraded-black'>Registrarse</button>
       </form>
     </div>
   )
