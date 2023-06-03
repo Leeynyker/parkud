@@ -6,6 +6,7 @@ import NewUser from "./NewUser.modal";
 import '../../pages/styles/forms-inner.css';
 import '../../pages/styles/forms.css';
 import NewParking from "./NewParking.modal";
+import NewStaff from "./NewStaff.modal";
 
 export default function RegisterModal({ toShow }) {
   const [open, setOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function RegisterModal({ toShow }) {
   function handleSubmit(e) {
     e.preventDefault();
     let datos = {};
+    console.log(toShow);
     if (toShow === "usuario") {
       datos = {
         usuario: {
@@ -80,6 +82,25 @@ export default function RegisterModal({ toShow }) {
       console.table(datos);
     }
 
+    if (toShow === 'empleado') {
+      datos = {
+        usuario: {
+          nombres: `${nombre.current.value} ${apellido.current.value}`,
+          username: correo.current.value,
+          password: contrasena.current.value,
+          enabled: true,
+          placaVehiculo: null,
+          puntosAcumulados: 0,
+          rol: {
+            rolId: 1,
+            nombreRol: 'Admin'
+          }
+        },
+        tarjetaDeCredito: null
+      }
+      console.table(datos);
+    }
+
   }
 
   return (
@@ -113,6 +134,16 @@ export default function RegisterModal({ toShow }) {
               fidelizacion
             }}
           /> : null}
+          { toShow === 'empleado' ? <NewStaff 
+          handleSubmit={handleSubmit}
+            refs={{ 
+              nombre, 
+              apellido, 
+              correo, 
+              contrasena, 
+              parqueaderoAsignado
+            }}/> 
+          : null}
         </>
       </Modal.Content>
     </Modal>
