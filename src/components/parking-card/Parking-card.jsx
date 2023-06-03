@@ -1,5 +1,4 @@
 import Map from '../maps/Map';
-import Prueba from '../maps/Prueba';
 import './parking-card.css';
 import { Link } from 'wouter';
 // import React, { useEffect, useState } from 'react';
