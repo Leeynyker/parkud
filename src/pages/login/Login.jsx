@@ -43,7 +43,7 @@ export default function Login() {
             </div>
           </div>
         </div>
-        <button className="degraded-orange">Iniciar Sesión</button>
+        <button style={{marginTop: '15px'}} className="degraded-orange">Iniciar Sesión</button>
         <Link to="#" className="forgot">
           Olvidé mi contraseña
         </Link>
