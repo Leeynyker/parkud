@@ -1,8 +1,11 @@
+import Map from '../maps/Map';
+import Prueba from '../maps/Prueba';
 import './parking-card.css';
 import { Link } from 'wouter';
-import MapContainer from "../map/MapContainer"
+// import React, { useEffect, useState } from 'react';
 export default function ParkingCard({ id, nombre, direccion, cupos, tarifa, apertura, cierre, img, puntos = null }) {
-  const address = '1600 Amphitheatre Parkway, Mountain View, CA';
+  // const address = '1600 Amphitheatre Parkway, Mountain View, CA';
+  
   return (
     <div className="parking-card">
       <div className="parking-info">
@@ -18,9 +21,8 @@ export default function ParkingCard({ id, nombre, direccion, cupos, tarifa, aper
         }
       </div>
       <div className="parking-img single-element">
-        {/* <img src={img} alt={`Parqueadero ${direccion}`} /> */}
         <div className="simulador-img">
-        <MapContainer address={address} />
+          <Map direccion={direccion}/>
         </div>
       </div>
     </div>
