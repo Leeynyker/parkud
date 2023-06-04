@@ -7,7 +7,7 @@ const MapComponent = ({ address }) => {
   const handleGeocodeResult = (results) => {
     if (results && results.length > 0) {
       const location = results[0].latlon;
-      mapRef.current.setView(location, 8); // Establece la vista del mapa a la ubicación encontrada
+      // mapRef.current.setView(location, 8); // Establece la vista del mapa a la ubicación encontrada
     }
   };
 
