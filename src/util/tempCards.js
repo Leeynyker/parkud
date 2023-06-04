@@ -1,7 +1,7 @@
 export const tempCards = [{
   id: '1',
   nombre: 'Parqueadero 1',
-  direccion: 'Carrera 8 #40a-60',
+  direccion: 'Cra. 7 #40b - 36',
   cupos: 54,
   tarifa: '110/h',
   apertura: '7am',
