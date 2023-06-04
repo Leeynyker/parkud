@@ -3,7 +3,12 @@ import { Link } from "wouter"
 import { icons } from "../icons/icons"
 import './dashboardList.css'
 
-export default function DashboardList({ toShow }) {
+export default function DashboardList({ toShow, data }) {
+
+  let rows = []
+  if(toShow === 'parkings'){
+    rows.push(data.map((item, index) => [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos]))
+  }
 
   return (
     <section className="dashboard-list">
@@ -15,11 +20,11 @@ export default function DashboardList({ toShow }) {
         )}
       </div>
 
-      {/* {Se pone la información en la tabla} */}
+      {/* Se pone la información en la tabla */}
       <div className="dashboard-content">
-        {usersTest[toShow].map((element, index) =>
+        {rows.length !== 0 && rows?.map((element, index) =>
           <div className="row" key={`row${index}`}>
-            {element.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
+            {element[0]?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
             <span className="separated">
               {userActions[toShow].map((accion, i) => <Link key={`icon${index},${i}`} to='#'>{icons[accion]}</Link>)}
             </span>

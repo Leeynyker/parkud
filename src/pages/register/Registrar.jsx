@@ -3,9 +3,9 @@ import CreditCardForm from "../../components/forms/register/CreditCard.form";
 import "../styles/forms-inner.css";
 import "../styles/forms.css";
 import { useRef, useState } from "react";
-import useFetchAPI from "../../hooks/fetchAPI";
+import useFetchAPI from "../../hooks/fetchUsers";
 import { useLocation } from "wouter";
-import { Button, Form, Message, Modal } from 'semantic-ui-react';
+import { Button, Message, Modal } from 'semantic-ui-react';
 export default function Register() {
   const [location, navigate] = useLocation();
 

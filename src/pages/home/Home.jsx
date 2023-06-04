@@ -2,7 +2,7 @@ import Navbar from "../../components/header/Navbar"
 import '../styles/home.css'
 import { tempCards } from "../../util/tempCards"
 import ParkingCard from "../../components/parking-card/Parking-card"
-import useFetchAPI from "../../hooks/fetchAPI"
+import useFetchAPI from "../../hooks/fetchUsers"
 
 export default function Home() {
 

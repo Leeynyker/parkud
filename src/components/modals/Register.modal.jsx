@@ -1,6 +1,6 @@
 import { Modal, Header } from "semantic-ui-react";
 import { useState, useRef } from "react";
-import useFetchAPI from "../../hooks/fetchAPI";
+import useFetchAPI from "../../hooks/fetchUsers";
 import NewUser from "./NewUser.modal";
 
 import '../../pages/styles/forms-inner.css';

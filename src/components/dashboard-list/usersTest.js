@@ -60,9 +60,9 @@ const userColumns = {
   ],
   parkings: [
     'nombre',
-    'capacidad',
-    'ocupación',
+    'horario',
     'tarifa',
+    'cupos',
     'acciones'
   ]
 }
