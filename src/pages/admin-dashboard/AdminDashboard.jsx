@@ -33,12 +33,7 @@ export default function AdminDashboard( {toShow}) {
       <div className="dashboard-body">
         <Sidebar />
         <div className="single-element">
-          <>
-            {avalaibleToAdd[currentRole][toShow] ? <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} /> : null}  
-            <DashboardList toShow={toShow} data={data}/>
-          </>
-
-{/*          
+                   
           {avalaibleToAdd[currentRole][toShow] ? (
             // Condición 1: Si toShow es igual a 'user', 'parkings' o 'staff'
             <>
@@ -59,7 +54,7 @@ export default function AdminDashboard( {toShow}) {
               // Renderiza el componente Login
               <Stats data={jsonData}/>
             ) : null // Si ninguna condición se cumple, renderiza null
-          } */}
+          } 
 
 
         </div>
