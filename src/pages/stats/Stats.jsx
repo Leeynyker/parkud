@@ -41,6 +41,7 @@ export default function Stats( ) {
         labels: barkeys,
         datasets: [{
             label: "$COP Vendido por Día",
+
             data: barvalues,
             backgroundColor: ["#FF8000"],
             borderWidth: 2, 
@@ -51,7 +52,7 @@ export default function Stats( ) {
     const[pieChartConfig, pieUserData] = useState({
       labels: piekeys,
       datasets: [{
-          label: "% Ocupación por Día",
+          label: "Porcentaje de Ocupación por Día",
           data: pievalues,
           backgroundColor: ["#FF8000"],
           borderWidth: 2, 
@@ -61,15 +62,23 @@ export default function Stats( ) {
 
   return (
     
-    < >
-      <div style={{ background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
+    <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', padding:"10px"  }} >
+      <div style={{ padding: '20px', width:"90%", height: '600px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
+        
+        <div >Ingresos Movistar Arena | 01/01/2023 - 05/02/2023</div>
+        <div style={{ padding: '4px'}}>395,000 COP</div>
         <BarChart chartData={barChartConfig} />
+
       </div>
 
-      <div style={{ background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
+      <div style={{ padding: '20px', width:"90%", height: '400px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
+        
+        <div>Ingresos Movistar Arena | 01/01/2023 - 05/02/2023</div>
+        <div style={{ padding: '4px'}}>28%</div>
         <PieChart chartData={pieChartConfig} />
+
       </div>
-    </>
+    </div>
 
   )
 }
