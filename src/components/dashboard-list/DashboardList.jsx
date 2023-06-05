@@ -1,14 +1,26 @@
 import { usersTest, userColumns, userActions } from "./usersTest"
 import { Link } from "wouter"
+import { useEffect, useState } from 'react'
 import { icons } from "../icons/icons"
 import './dashboardList.css'
 
 export default function DashboardList({ toShow, data }) {
 
-  let rows = []
-  if(toShow === 'parkings'){
-    rows.push(data.map((item, index) => [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos]))
-  }
+  const [rows, setRows] = useState([]);
+  useEffect(() => {
+    if (toShow === 'parkings') {
+      setRows(data.map((item, index) => [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos]))
+    }
+    if (toShow === 'staff') {
+      setRows(data.map((item, index) => [item.nombres, item.username, item.rol.nombreRol]))
+    }
+    if (toShow === 'user') {
+      setRows(data.map((item, index) => [item.nombres, item.username, item.puntosAcumulados, item.placaVehiculo]))
+    }
+  }, [data])
+
+
+
 
   return (
     <section className="dashboard-list">
@@ -24,7 +36,8 @@ export default function DashboardList({ toShow, data }) {
       <div className="dashboard-content">
         {rows.length !== 0 && rows?.map((element, index) =>
           <div className="row" key={`row${index}`}>
-            {element[0]?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
+            {/* {console.log(element)} */}
+            {element?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
             <span className="separated">
               {userActions[toShow].map((accion, i) => <Link key={`icon${index},${i}`} to='#'>{icons[accion]}</Link>)}
             </span>

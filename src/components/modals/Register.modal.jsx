@@ -1,5 +1,5 @@
 import { Modal, Header } from "semantic-ui-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import useFetchAPI from "../../hooks/fetchUsers";
 import NewUser from "./NewUser.modal";
 
@@ -10,6 +10,17 @@ import NewStaff from "./NewStaff.modal";
 
 export default function RegisterModal({ toShow }) {
   const [open, setOpen] = useState(false);
+  const [roleToRegister, setRoleToRegister] = useState({})
+  useEffect(()=>{
+    if(toShow === 'usuario') setRoleToRegister({
+      rolId: 4,
+      nombreRol: 'Cliente'
+    })
+    if(toShow === 'empleado') setRoleToRegister({
+      rolId: 1,
+      nombreRol: 'Admin'
+    })
+  },[toShow])
 
   //Para registrar usuario y personal
   const nombre = useRef('');
@@ -35,7 +46,6 @@ export default function RegisterModal({ toShow }) {
   //Para registrar empleado
   const parqueaderoAsignado = useRef('');
 
-
   const { registerUser } = useFetchAPI();
 
   function handleSubmit(e) {
@@ -51,10 +61,7 @@ export default function RegisterModal({ toShow }) {
           enabled: true,
           placaVehiculo: placaVehiculo.current.value,
           puntosAcumulados: 0,
-          rol: {
-            rolId: 4,
-            nombreRol: 'Cliente'
-          }
+          rol: roleToRegister
         },
         tarjetaDeCredito: [
           {
@@ -64,6 +71,7 @@ export default function RegisterModal({ toShow }) {
           }
         ]
       }
+      console.log(datos)
       registerUser(datos);
     }
 
@@ -79,7 +87,8 @@ export default function RegisterModal({ toShow }) {
           direccion: direccion.current.value
         }
       }
-      console.table(datos);
+      console.log(datos);
+
     }
 
     if (toShow === 'empleado') {
@@ -89,18 +98,15 @@ export default function RegisterModal({ toShow }) {
           username: correo.current.value,
           password: contrasena.current.value,
           enabled: true,
-          placaVehiculo: null,
-          puntosAcumulados: 0,
           rol: {
             rolId: 1,
             nombreRol: 'Admin'
           }
-        },
-        tarjetaDeCredito: null
+        }
       }
-      console.table(datos);
+      console.log(datos);
+      registerUser(datos)
     }
-
   }
 
   return (

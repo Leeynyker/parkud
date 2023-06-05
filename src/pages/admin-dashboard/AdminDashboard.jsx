@@ -7,6 +7,7 @@ import '../styles/forms-inner.css'
 import RegisterModal from "../../components/modals/Register.modal";
 import { avalaibleToAdd } from "./avalaibleToAdd";
 import useFetchParkings from "../../hooks/fetchParkings";
+import useFetchAPI from "../../hooks/fetchUsers";
 import { useEffect, useState } from "react";
 
 
@@ -14,11 +15,15 @@ export default function AdminDashboard( {toShow}) {
 
   const currentRole = localStorage.getItem('role');
   const { getParkings } = useFetchParkings();
+  const { getUsers, getAdmins } = useFetchAPI();
   const [data, setData] = useState([])
 
   useEffect(()=>{
-    getParkings().then((response)=> setData(response))
+    if(toShow === 'parkings') getParkings().then((response)=> setData(response))
+    if(toShow === 'user') getUsers().then((response)=> setData(response))
+    if(toShow === 'staff') getAdmins().then((response)=> setData(response))
   },[toShow])
+  
   const jsonData = {
     "02/02/2023": "10000",
     "03/02/2023": "200000",

@@ -38,6 +38,48 @@ export default function useFetchAPI() {
       })
   }
 
+  const getUsers = async () => {
+    return axios({
+      method: 'get',
+      url: `${ENDPOINT}/usuario/listarUsuarios/`,
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then((response) => {
+        if (response.status = 200) {
+          return response.data.filter((obj) => obj.rol.rolId === 3);
+        }
+        return false;
+
+      })
+      .catch((error) => {
+        console.log(error);
+        return false
+      })
+  }
+
+  const getAdmins = async () => {
+    return axios({
+      method: 'get',
+      url: `${ENDPOINT}/usuario/listarUsuarios/`,
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then((response) => {
+        if (response.status = 200) {
+          return response.data.filter((obj) => obj.rol.rolId === 1);
+        }
+        return false;
+
+      })
+      .catch((error) => {
+        console.log(error);
+        return false
+      })
+  }
+
   const getDataUser = async () => {
     return axios({
       method: "get",
@@ -63,5 +105,5 @@ export default function useFetchAPI() {
       })
   }
 
-  return { registerUser, getUser, getDataUser }
+  return { registerUser, getUser, getDataUser, getUsers, getAdmins }
 }

@@ -41,7 +41,6 @@ const userColumns = {
     'nombre',
     'correo',
     'rol',
-    'parqueadero',
     'acciones'
   ],
   user: [
