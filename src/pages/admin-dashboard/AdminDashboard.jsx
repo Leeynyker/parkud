@@ -19,7 +19,8 @@ export default function AdminDashboard( {toShow}) {
   useEffect(()=>{
     getParkings().then((response)=> setData(response))
   },[toShow])
-  const jsonData = {
+
+  const jsonChartData = {
     "02/02/2023": "10000",
     "03/02/2023": "200000",
     "04/02/2023": "100000",
@@ -29,22 +30,25 @@ export default function AdminDashboard( {toShow}) {
 
   return (
     <>
-      <Navbar />
-      <div className="dashboard-body">
-        <Sidebar />
-        <div className="single-element">
+     
                    
           {avalaibleToAdd[currentRole][toShow] ? (
             // Condición 1: Si toShow es igual a 'user', 'parkings' o 'staff'
             <>
-              {
-                // Si la condición es verdadera y se cumple avalaibleToAdd[currentRole][toShow]
-                avalaibleToAdd[currentRole][toShow] ? (
-                  // Renderiza el componente RegisterModal con la prop toShow
-                  <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} />
-                ) : null // Si no se cumple la condición, renderiza null
-              }
-              <DashboardList toShow={toShow} />
+               <Navbar />
+              <div className="dashboard-body">
+                <Sidebar />
+                <div className="single-element">
+                {
+                  // Si la condición es verdadera y se cumple avalaibleToAdd[currentRole][toShow]
+                  avalaibleToAdd[currentRole][toShow] ? (
+                    // Renderiza el componente RegisterModal con la prop toShow
+                    <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} />
+                  ) : null // Si no se cumple la condición, renderiza null
+                }
+                <DashboardList toShow={toShow} />
+                </div>
+              </div>
             </>
            ) : 
           
@@ -52,13 +56,19 @@ export default function AdminDashboard( {toShow}) {
           toShow === 'stats' ? (
               // Condición 2: Si toShow es igual a 'stats'
               // Renderiza el componente Login
-              <Stats data={jsonData}/>
+            <>
+              <Navbar />
+              <div className="dashboard-body">
+                <Sidebar />
+                <div className="single-element" >
+                  <Stats data={jsonChartData}/>
+                </div>
+              </div>
+            </>
             ) : null // Si ninguna condición se cumple, renderiza null
           } 
 
 
-        </div>
-      </div>
     </>
   )
 }
