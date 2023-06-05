@@ -21,13 +21,7 @@ export default function AdminDashboard( {toShow}) {
     getParkings().then((response)=> setData(response))
   },[toShow])
 
-  const jsonChartData = {
-    "01/02/2023": "80000",
-    "02/02/2023": "10000",
-    "03/02/2023": "200000",
-    "04/02/2023": "100000",
-    "05/02/2023": "5000"
-  };
+  
 
   return (
     <>
@@ -61,8 +55,8 @@ export default function AdminDashboard( {toShow}) {
               <Navbar />
               <div className="dashboard-body">
                 <SidebarStats />
-                <div className="single-element" >
-                  <Stats data={jsonChartData}/>
+                <div >
+                  <Stats />
                 </div>
               </div>
             </>

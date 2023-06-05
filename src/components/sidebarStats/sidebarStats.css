@@ -1,4 +1,4 @@
-.sidebar{
+.sidebar {
   background-color: var(--gris-claro);
   height: calc(100svh - var(--header-height));
   display: flex;
@@ -8,9 +8,10 @@
   padding: 10px;
 }
 
-.sidebar a{
+.sidebar a {
   display: block;
   text-decoration: none;
+  font-size: 80%;
   color: inherit;
   height: 40px;
   width: 100%;
@@ -24,6 +25,6 @@
   line-height: 35px;
 }
 
-.sidebar a:visited{
-  color: inherit
+.sidebar a:visited {
+  color: inherit;
 }

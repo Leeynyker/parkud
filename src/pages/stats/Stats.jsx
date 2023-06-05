@@ -12,29 +12,47 @@ import React, { useEffect , useState } from 'react';
 
 
 
-export default function Stats( { data } ) {
+export default function Stats( ) {
 
-    const keys = Object.keys(data);
-    const values = Object.values(data);
+    const barChartData = {
+      "01/02/2023": "80000",
+      "02/02/2023": "10000",
+      "03/02/2023": "200000",
+      "04/02/2023": "100000",
+      "05/02/2023": "5000"
+    };
+
+    const barkeys = Object.keys(barChartData);
+    const barvalues = Object.values(barChartData);
   
+    const pieChartData = {
+      "01/02/2023": "40",
+      "02/02/2023": "1",
+      "03/02/2023": "27",
+      "04/02/2023": "13",
+      "05/02/2023": "59"
+    };
+
+    const piekeys = Object.keys(pieChartData);
+    const pievalues = Object.values(pieChartData);
     
 
-    const[barChartData, charUserData] = useState({
-        labels: keys,
+    const[barChartConfig, charUserData] = useState({
+        labels: barkeys,
         datasets: [{
             label: "$COP Vendido por Día",
-            data: values,
+            data: barvalues,
             backgroundColor: ["#FF8000"],
             borderWidth: 2, 
             borderColor: "white" 
         }]
     })
     
-    const[pieChartData, pieUserData] = useState({
-      labels: keys,
+    const[pieChartConfig, pieUserData] = useState({
+      labels: piekeys,
       datasets: [{
           label: "% Ocupación por Día",
-          data: values,
+          data: pievalues,
           backgroundColor: ["#FF8000"],
           borderWidth: 2, 
           borderColor: "white" 
@@ -43,10 +61,15 @@ export default function Stats( { data } ) {
 
   return (
     
-    <div style={{ width: '400px', height: '300px' }}>
-        <BarChart chartData={barChartData} />
-        <PieChart chartData={pieChartData} />
-    </div>
+    < >
+      <div style={{ background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
+        <BarChart chartData={barChartConfig} />
+      </div>
+
+      <div style={{ background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', justifyContent: 'center', alignItems: 'center'  }}>
+        <PieChart chartData={pieChartConfig} />
+      </div>
+    </>
 
   )
 }
