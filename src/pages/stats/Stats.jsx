@@ -71,11 +71,11 @@ export default function Stats( ) {
 
       </div>
 
-      <div style={{ padding: '20px', width:"90%", height: '400px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
+      <div style={{ padding: '20px', width:"90%", height: '450px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
         
         <div>Ingresos Movistar Arena | 01/01/2023 - 05/02/2023</div>
         <div style={{ padding: '4px'}}>28%</div>
-        <PieChart chartData={pieChartConfig} />
+        <PieChart chartData={pieChartConfig}/>
 
       </div>
     </div>
