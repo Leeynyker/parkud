@@ -1,0 +1,29 @@
+.sidebar{
+  background-color: var(--gris-claro);
+  height: calc(100svh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  color: var(--font-color-principal);
+  gap: 10px;
+  padding: 10px;
+}
+
+.sidebar a{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 40px;
+  width: 100%;
+  background-color: var(--blanco);
+  padding: 2px 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px -3px;
+
+  text-transform: capitalize;
+  line-height: 35px;
+}
+
+.sidebar a:visited{
+  color: inherit
+}

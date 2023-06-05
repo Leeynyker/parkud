@@ -1,6 +1,7 @@
 import DashboardList from "../../components/dashboard-list/DashboardList";
 import Stats from "../stats/Stats";
 import Navbar from "../../components/header/Navbar";
+import SidebarStats from "../../components/sidebarStats/SidebarStats";
 import Sidebar from "../../components/sidebar/Sidebar";
 import '../styles/adminDashboard.css'
 import '../styles/forms-inner.css'
@@ -21,11 +22,11 @@ export default function AdminDashboard( {toShow}) {
   },[toShow])
 
   const jsonChartData = {
+    "01/02/2023": "80000",
     "02/02/2023": "10000",
     "03/02/2023": "200000",
     "04/02/2023": "100000",
-    "05/02/2023": "5000",
-    "01/02/2023": "80000"
+    "05/02/2023": "5000"
   };
 
   return (
@@ -59,7 +60,7 @@ export default function AdminDashboard( {toShow}) {
             <>
               <Navbar />
               <div className="dashboard-body">
-                <Sidebar />
+                <SidebarStats />
                 <div className="single-element" >
                   <Stats data={jsonChartData}/>
                 </div>
