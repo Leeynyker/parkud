@@ -1,10 +1,10 @@
 const navBarOptions = {
   Gerente: [
-    { name: 'estadisticas', url: '/dashboard/stats' },
+    { name: 'estadisticas', url: '/stats' },
     { name: 'administracion', url: '/dashboard/user' }
   ],
   Admin: [
-    { name: 'estadisticas', url: '/dashboard/stats' },
+    { name: 'estadisticas', url: '/stats' },
     { name: 'administracion', url: '/dashboard/user' }
   ],
   Cliente: [

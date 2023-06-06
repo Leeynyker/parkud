@@ -1,6 +1,7 @@
 import './App.css';
 import { Route } from 'wouter';
 import Login from './pages/login/Login';
+import Stats from './pages/stats/Stats';
 import Register from './pages/register/Registrar';
 import Home from './pages/home/Home';
 import AdminDashboard from './pages/admin-dashboard/AdminDashboard'
@@ -23,6 +24,11 @@ function App() {
         </Route>
         <Route path='/register'>
           <Register />
+        </Route>
+        <Route path='/stats'>
+          <AdminRequired>
+            <Stats />
+          </AdminRequired>
         </Route>
         <Route path='/dashboard/:toShow'>
           {params =>

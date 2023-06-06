@@ -1,13 +1,43 @@
 import { usersTest, userColumns, userActions } from "./usersTest"
-import { Link } from "wouter"
+import { useEffect, useState } from 'react'
 import { icons } from "../icons/icons"
+import useFetchAPI from "../../hooks/fetchUsers"
 import './dashboardList.css'
 
 export default function DashboardList({ toShow, data }) {
 
-  let rows = []
-  if(toShow === 'parkings'){
-    rows.push(data.map((item, index) => [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos]))
+  const [rows, setRows] = useState([]);
+  const { deleteUser } = useFetchAPI()
+  useEffect(() => {
+    if (toShow === 'parkings') {
+      setRows(data.map((item, index) => [{ id: item.id, data: [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos] }]))
+    }
+    if (toShow === 'staff') {
+      setRows(data.map((item, index) => [{ id: item.id, data: [item.nombres, item.username, item.rol.nombreRol] }]))
+    }
+    if (toShow === 'user') {
+      setRows(data.map((item, index) => [{ id: item.id, data: [item.nombres, item.username, item.puntosAcumulados, item.placaVehiculo] }]))
+    }
+  }, [data])
+
+  function handleDelete(userId) {
+
+    if(toShow !== 'parkings'){
+      deleteUser(userId)
+        .then(res => {
+          if (res) {
+            let filtrado = rows.filter((r) => 
+              r[0].id !== userId
+            )
+            setRows(filtrado)
+          }
+        });
+    }
+  }
+
+
+  function editUser(userId) {
+    console.log(userId);
   }
 
   return (
@@ -24,9 +54,10 @@ export default function DashboardList({ toShow, data }) {
       <div className="dashboard-content">
         {rows.length !== 0 && rows?.map((element, index) =>
           <div className="row" key={`row${index}`}>
-            {element[0]?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
+            {/* {console.log(element[0])} */}
+            {element[0]?.data?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
             <span className="separated">
-              {userActions[toShow].map((accion, i) => <Link key={`icon${index},${i}`} to='#'>{icons[accion]}</Link>)}
+              {userActions[toShow].map((accion, i) => <button key={`icon${index},${i}`} onClick={accion === 'editar' ? () => editUser(element[0].id) : () => handleDelete(element[0].id)}>{icons[accion]}</button>)}
             </span>
           </div>
         )}

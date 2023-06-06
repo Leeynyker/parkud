@@ -20,5 +20,23 @@ export default function useFetchParkings(){
     return response;
   }
 
-  return { getParkings }
+  const addParking = async function(data){
+    const url = `${ENDPOINT}/parqueadero/guardar/`;
+    console.log(url);
+    const response  = axios({
+      method: "post",
+      url: url,
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if(response.status === 200){
+        return true;
+      }
+    })
+    return response;
+  }
+
+  return { getParkings, addParking }
 }

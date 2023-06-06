@@ -41,7 +41,6 @@ const userColumns = {
     'nombre',
     'correo',
     'rol',
-    'parqueadero',
     'acciones'
   ],
   user: [
@@ -68,10 +67,10 @@ const userColumns = {
 }
 
 const userActions = {
-  staff: ['editar', 'eliminar'],
-  user: ['editar', 'eliminar'],
+  staff: [ 'eliminar'],
+  user: [ 'eliminar'],
   my: ['editar'],
-  parkings: ['editar', 'eliminar']
+  parkings: ['eliminar']
 }
 
 

@@ -88,13 +88,15 @@ export default function Register() {
     const [month, year] = expirationDate.split("/");
 
     // Verificar si el año actual es menor o igual al año de expiración
-    if (parseInt(year, 10) < currentDate.getFullYear()) {
+    console.log(parseInt(year, 10));
+    console.log(currentDate.getFullYear());
+    if (parseInt(year+2000, 10) < currentDate.getFullYear()) {
       return false;
     }
 
     // Si el año de expiración es igual al año actual, verificar si el mes es mayor o igual al mes actual
     if (
-      parseInt(year, 10) === currentDate.getFullYear() &&
+      parseInt(year+2000, 10) === currentDate.getFullYear() &&
       parseInt(month, 10) <= currentDate.getMonth() + 1
     ) {
       return false;
@@ -116,8 +118,8 @@ export default function Register() {
           placaVehiculo: placaVehiculo.current.value,
           puntosAcumulados: 0,
           rol: {
-            rolId: 2,
-            nombreRol: "Gerente",
+            rolId: 4,
+            nombreRol: "Cliente",
           },
         },
         tarjetaDeCredito: [
