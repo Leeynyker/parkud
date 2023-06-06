@@ -3,11 +3,18 @@ import '../styles/home.css'
 import { tempCards } from "../../util/tempCards"
 import ParkingCard from "../../components/parking-card/Parking-card"
 import useFetchAPI from "../../hooks/fetchUsers"
+import useFetchParkings from "../../hooks/fetchParkings"
+import { useEffect, useState } from "react"
 
 export default function Home() {
 
   const token = localStorage.getItem('token');
   const {getDataUser} = useFetchAPI();
+  const {getParkings} = useFetchParkings();
+  const [parkings, setParkings] = useState([]);
+  useEffect(()=>{
+    getParkings().then((response)=>{setParkings(response)})
+  }, [])
 
   return (
     <>
@@ -17,8 +24,8 @@ export default function Home() {
         <button>Buscar</button>
       </div>
       <div className="cards-container">
-        {tempCards.map((data, index) => {
-          return (<ParkingCard key={index}{...data} />)
+        {parkings.map((data, index) => {
+          return (<ParkingCard key={index} parqueadero={data} />)
         })}
       </div>
 

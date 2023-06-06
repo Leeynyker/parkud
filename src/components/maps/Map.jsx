@@ -39,9 +39,9 @@ const Map = ({ direccion }) => {
       {/* <MapContainer className="mapa" center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}> */}
       <MapContainer
         className="mapa"
-        center={[4.62814433909062, -74.06591620264918]}
+        // center={[4.62814433909062, -74.06591620264918]}
         // center={[4.4849339, -74.0981671]}
-        // center={[latitude, longitude]}
+        center={[latitude, longitude]}
         zoom={14}
         scrollWheelZoom={false}
       >

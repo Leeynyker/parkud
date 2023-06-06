@@ -6,30 +6,23 @@ import React, { useState } from "react";
 import Booking from "../booking/Booking";
 
 export default function ParkingCard({
-  id,
-  nombre,
-  direccion,
-  cupos,
-  tarifa,
-  apertura,
-  cierre,
-  img,
-  puntos = null,
+  // idParqueadero,
+  // nombreParqueadero,
+  // direccion,
+  // cupos,
+  // tarifa,
+  // apertura,
+  // cierre,
+  // img,
+  // puntos = null,
+  parqueadero
 }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState(null);
 
   const handleOpenModal = () => {
     setModalData({
-      id,
-      nombre,
-      direccion,
-      cupos,
-      tarifa,
-      apertura,
-      cierre,
-      img,
-      puntos,
+      parqueadero
     });
     setModalOpen(true);
   };
@@ -38,22 +31,22 @@ export default function ParkingCard({
     <div className="parking-card">
       <div className="parking-info">
         <div className="main-info">
-          <Link to={`/parking/${id}`}>
-            <h4>{nombre}</h4>
+          <Link to={`/parking/${parqueadero.idParqueadero}`}>
+            <h4>{parqueadero.nombreParqueadero}</h4>
           </Link>
-          <span>{direccion}</span>
+          <span>{parqueadero.ubicacion.direccion}</span>
         </div>
-        <span>{cupos} cupos libres</span>
-        <span>Tarifa: ${tarifa}</span>
-        <span>{`${apertura} - ${cierre}`}</span>
-        {puntos && (
+        <span>{parqueadero.cupos} cupos libres</span>
+        <span>Tarifa: ${parqueadero.tarifa}</span>
+        <span>{`${parqueadero.horarioServicio}`}</span>
+        {/* {puntos && (
           <span className="puntos">{`Puntos PAR-KUD: ${puntos}`}</span>
-        )}
+        )} */}
         <button className="degraded-orange button-booking" onClick={handleOpenModal}>Reservar</button>
       </div>
       <div className="parking-img single-element">
         <div className="simulador-img">
-          <Map direccion={direccion} />
+          <Map direccion={parqueadero.ubicacion.direccion}/>
         </div>
       </div>
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} style={{ width: '800px' }}>
@@ -62,13 +55,14 @@ export default function ParkingCard({
             <Modal.Header>{modalData.nombre}</Modal.Header>
             <Modal.Content>
               <Booking
-                nombre={nombre}
-                direccion={direccion}
-                cupos={cupos}
-                tarifa={tarifa}
-                apertura={apertura}
-                cierre={cierre}
-                puntos={puntos}
+                nombre={parqueadero.nombreParqueadero}
+                direccion={parqueadero.ubicacion.direccion}
+                cupos={parqueadero.cupos}
+                tarifa={parqueadero.tarifa}
+                horario={parqueadero.horarioServicio}
+                // apertura={apertura}
+                // cierre={cierre}
+                // puntos={puntos}
               />
               {/* <p>Dirección: {modalData.direccion}</p> */}
               {/* Agrega el resto de los datos de la tarjeta aquí */}

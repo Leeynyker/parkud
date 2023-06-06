@@ -2,13 +2,10 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import './booking.css'
 export default function Booking({
-  nombre,
   direccion,
   cupos,
   tarifa,
-  apertura,
-  cierre,
-  puntos,
+  horario,
 }) {
   return (
     <div>
@@ -18,7 +15,7 @@ export default function Booking({
         <p className="data">{cupos} cupos libres</p>
         <p className="data">Tarifa: ${tarifa}</p>
         <p className="data">
-          Horario: {apertura} - {cierre}
+          Horario: {horario}
         </p>
         {/* {puntos && <p>Puntos PAR-KUD: {puntos}</p>} */}
       </div>
