@@ -38,5 +38,21 @@ export default function useFetchParkings(){
     return response;
   }
 
-  return { getParkings, addParking }
+  async function deleteParking(id){
+    return axios({
+      method: 'delete',
+      url: ENDPOINT + '/parqueadero/eliminar/' + id,
+      headers:{
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).then((response) => {
+      if (response.status === 200) return response.data
+      return false;
+    }).catch((error) => {
+      console.log(error);
+      return false;
+    })
+  }
+
+  return { getParkings, addParking, deleteParking }
 }
