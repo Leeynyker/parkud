@@ -1,19 +1,29 @@
 
 import { Link } from "wouter"
-import '../sidebar/sidebar.css';
-import { useContext } from "react";
-import LoggedContext from "../../context/Logged.context";
+import '../sidebarStats/sidebarStats.css';
 
-export default function Sidebar() {
+import { DateRangePicker } from 'rsuite';
+import { Button } from 'rsuite';
+import 'rsuite/dist/rsuite.min.css';
+
+import optionButton from "../optionButton/optionButton"
+
+const { allowedMaxDays, allowedDays, allowedRange, beforeToday, afterToday, combine } =
+  DateRangePicker;
+
+ 
+
+export default function SidebarStats() {
 
 
   return (
     <section className="sidebar">
       <Link href={""}>Fecha</Link>
-      <Link href={""} >01/02/2023 - 05/02/2023</Link>
+      <DateRangePicker disabledDate={allowedMaxDays(7)} character=' hasta ' format='dd/MM/yy' size='md' />
       <Link href={""}>Parqueadero</Link>
+
       <Link href={""}>Movistar Arena</Link>
-      {/*currentRole.map((option, index) => <Link href={`/dashboard/${option.url}`} key={index}>{option.nombre}</Link>)*/}
+      <Button color="orange" appearance="primary">Search</Button>
     </section>
   )
 }
