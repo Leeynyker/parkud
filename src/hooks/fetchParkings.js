@@ -22,7 +22,6 @@ export default function useFetchParkings(){
 
   const addParking = async function(data){
     const url = `${ENDPOINT}/parqueadero/guardar/`;
-    console.log(url);
     const response  = axios({
       method: "post",
       url: url,
@@ -32,10 +31,27 @@ export default function useFetchParkings(){
       }
     }).then((response) => {
       if(response.status === 200){
-        return true;
+        return response.data;
       }
     })
     return response;
+  }
+
+  const addParkingSlots = async function(data){
+    const url = `${ENDPOINT}/espacioDeParqueadero/guardar/`;
+    return axios({
+      method: 'post',
+      url: url,
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((res) => {
+      return res.status === 200;
+    }).catch((error) => {
+      console.log(error);
+      return false;
+    })
   }
 
   async function deleteParking(id){
@@ -54,5 +70,5 @@ export default function useFetchParkings(){
     })
   }
 
-  return { getParkings, addParking, deleteParking }
+  return { getParkings, addParking, deleteParking, addParkingSlots }
 }

@@ -13,7 +13,7 @@ export default function DashboardList({ toShow, data }) {
   useEffect(() => {
     // console.log(data);
     if (toShow === 'parkings') {
-      setRows(data.map((item) => [{ id: item.id, data: [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos] }]))
+      setRows(data.map((item) => [{ id: item.idParqueadero, data: [item.nombreParqueadero, item.horarioServicio, `$${item.tarifa}`, item.cantidadDeCupos] }]))
     }
     if (toShow === 'staff') {
       setRows(data.map((item) => [{ id: item.id, data: [item.nombres, item.username, item.rol.nombreRol] }]))
@@ -25,27 +25,16 @@ export default function DashboardList({ toShow, data }) {
 
   function handleDelete(id) {
 
-    if (toShow !== 'parkings') {
-      deleteUser(id)
-        .then(res => {
-          if (res) {
-            let filtrado = rows.filter((r) =>
-              r[0].id !== id
-            )
-            setRows(filtrado)
-          }
-        });
-    } else {
-      deleteParking(id)
-        .then(res => {
-          if (res) {
-            let filtrado = rows.filter((r) =>
-              r[0].id !== id
-            )
-            setRows(filtrado)
-          }
-        });
-    }
+    let deleteFunction = toShow !== 'parkings' ? deleteUser : deleteParking;
+    deleteFunction(id)
+      .then(res => {
+        if (res) {
+          let filtrado = rows.filter((r) =>
+            r[0].id !== id
+          )
+          setRows(filtrado)
+        }
+      });
   }
 
 

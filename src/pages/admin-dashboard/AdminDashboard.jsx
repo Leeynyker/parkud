@@ -36,7 +36,7 @@ export default function AdminDashboard({ toShow }) {
             // Si la condición es verdadera y se cumple avalaibleToAdd[currentRole][toShow]
             avalaibleToAdd[currentRole][toShow] ? (
               // Renderiza el componente RegisterModal con la prop toShow
-              <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} data={data} />
+              <RegisterModal toShow={avalaibleToAdd[currentRole][toShow]} setData={setData}/>
             ) : null // Si no se cumple la condición, renderiza null
           }
           <DashboardList toShow={toShow} data={data} />
