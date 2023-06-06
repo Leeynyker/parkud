@@ -4,6 +4,22 @@ import { ENDPOINT } from "../util/api";
 export default function useFetchParkings(){
   const token = localStorage.getItem('token');
 
+  const getSpaceParking = async function(id){
+    const url = `${ENDPOINT}/parqueadero/listarEspaciosDeUnParqueadero/${id}`;
+    const response  = axios({
+      method: "GET",
+      url: url,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if(response.status === 200){
+        return response.data;
+      }
+    })
+    return response;
+  }
+
   const getParkings = async function(){
     const url = `${ENDPOINT}/parqueadero/listarParqueaderos/`;
     const response  = axios({
@@ -20,6 +36,23 @@ export default function useFetchParkings(){
     return response;
   }
 
+  const addReserva = async function(data){
+    const url = `${ENDPOINT}/detalleDeReserva/guardar/`;
+    const response  = axios({
+      method: "post",
+      url: url,
+      data: data,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if(response.status === 200){
+        return response.data;
+      }
+    })
+    return response;
+  }
+  
   const addParking = async function(data){
     const url = `${ENDPOINT}/parqueadero/guardar/`;
     const response  = axios({
@@ -70,5 +103,5 @@ export default function useFetchParkings(){
     })
   }
 
-  return { getParkings, addParking, deleteParking, addParkingSlots }
+  return { getParkings, addParking, deleteParking, addParkingSlots, getSpaceParking, addReserva}
 }

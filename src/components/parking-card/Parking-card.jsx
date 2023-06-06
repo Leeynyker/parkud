@@ -52,7 +52,7 @@ export default function ParkingCard({
       <Modal open={modalOpen} onClose={() => setModalOpen(false)} style={{ width: '800px' }}>
         {modalData && (
           <>
-            <Modal.Header>{modalData.nombre}</Modal.Header>
+            <Modal.Header>{parqueadero.nombreParqueadero}</Modal.Header>
             <Modal.Content>
               <Booking
                 nombre={parqueadero.nombreParqueadero}
@@ -60,7 +60,7 @@ export default function ParkingCard({
                 cupos={parqueadero.cupos}
                 tarifa={parqueadero.tarifa}
                 horario={parqueadero.horarioServicio}
-                // apertura={apertura}
+                id={parqueadero.idParqueadero}
                 // cierre={cierre}
                 // puntos={puntos}
               />
