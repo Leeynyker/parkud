@@ -105,9 +105,12 @@ export default function useFetchAPI() {
       }
     }).then((response) => {
       if (response.status === 200) {
+        console.log(response);
+        const id = response.data.id;
         const correo = response.data.username;
         const rol = response.data.rol.nombreRol;
         const puntos = response.data.puntosAcumulados;
+        localStorage.setItem('id', id)
         localStorage.setItem('mail', correo)
         localStorage.setItem('role', rol)
         localStorage.setItem('puntos', puntos)
