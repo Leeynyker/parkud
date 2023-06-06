@@ -31,7 +31,7 @@ export default function ParkingCard({
     <div className="parking-card">
       <div className="parking-info">
         <div className="main-info">
-          <Link to={`/parking/${parqueadero.idParqueadero}`}>
+          <Link to={`#`}>
             <h4>{parqueadero.nombreParqueadero}</h4>
           </Link>
           <span>{parqueadero.ubicacion.direccion}</span>

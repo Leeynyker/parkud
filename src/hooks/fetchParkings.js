@@ -52,7 +52,22 @@ export default function useFetchParkings(){
     })
     return response;
   }
-  
+
+  const getBookings = async function(){
+    const url = `${ENDPOINT}/detalleDeReserva/listarTodos/`;
+    const response  = axios({
+      method: "GET",
+      url: url,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if(response.status === 200){
+        return response.data;
+      }
+    })
+    return response;
+  }
   const addParking = async function(data){
     const url = `${ENDPOINT}/parqueadero/guardar/`;
     const response  = axios({
@@ -103,5 +118,5 @@ export default function useFetchParkings(){
     })
   }
 
-  return { getParkings, addParking, deleteParking, addParkingSlots, getSpaceParking, addReserva}
+  return { getParkings, addParking, deleteParking, addParkingSlots, getSpaceParking, addReserva, getBookings}
 }

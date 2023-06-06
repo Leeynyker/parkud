@@ -70,8 +70,13 @@ const userActions = {
   staff: [ 'eliminar'],
   user: [ 'eliminar'],
   my: ['editar'],
-  parkings: ['eliminar']
+  parkings: ['verReservas','eliminar']
 }
 
+const bookingColumns = [
+  'usuario',
+  'espacio parqueadero',
+  'horario'
+]
 
-export { usersTest, userColumns, userActions }
+export { usersTest, userColumns, userActions, bookingColumns }

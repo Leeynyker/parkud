@@ -1,12 +1,16 @@
 import { usersTest, userColumns, userActions } from "./usersTest"
 import { useEffect, useState } from 'react'
 import { icons } from "../icons/icons"
+import { Modal, Button } from "semantic-ui-react";
 import useFetchAPI from "../../hooks/fetchUsers"
 import useFetchParkings from "../../hooks/fetchParkings"
 import './dashboardList.css'
+import BookingModal from "../modals/Booking.modal";
 
 export default function DashboardList({ toShow, data }) {
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalID, setModalID] = useState(null);
   const [rows, setRows] = useState([]);
   const { deleteUser } = useFetchAPI()
   const { deleteParking } = useFetchParkings();
@@ -24,7 +28,6 @@ export default function DashboardList({ toShow, data }) {
   }, [data])
 
   function handleDelete(id) {
-
     let deleteFunction = toShow !== 'parkings' ? deleteUser : deleteParking;
     deleteFunction(id)
       .then(res => {
@@ -38,8 +41,9 @@ export default function DashboardList({ toShow, data }) {
   }
 
 
-  function editUser(userId) {
-    console.log(userId);
+  function showModal(userId) {
+    setModalID(userId);
+    setModalOpen(true);
   }
 
   return (
@@ -58,13 +62,16 @@ export default function DashboardList({ toShow, data }) {
           <div className="row" key={`row${index}`}>
             {/* {console.log(element[0])} */}
             {element[0]?.data?.map((value, index) => <span key={`parq${index}`}>{value}</span>)}
-            <span className="separated">
-              {userActions[toShow].map((accion, i) => <button key={`icon${index},${i}`} onClick={accion === 'editar' ? () => editUser(element[0].id) : () => handleDelete(element[0].id)}>{icons[accion]}</button>)}
-            </span>
+            {userActions[toShow]?.length &&
+              <span className="separated">
+                {userActions[toShow].map((accion, i) => <button key={`icon${index},${i}`} onClick={accion === 'verReservas' ? () => showModal(element[0].id) : () => handleDelete(element[0].id)}>{icons[accion]}</button>)}
+              </span>
+            }
+
           </div>
         )}
       </div>
-
+      <BookingModal modalOpen={modalOpen} setModalOpen={setModalOpen} id={modalID}/>
     </section>
   )
 }
