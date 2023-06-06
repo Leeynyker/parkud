@@ -6,6 +6,7 @@
   color: var(--font-color-principal);
   gap: 10px;
   padding: 10px;
+  font-size: inherit;
 }
 
 .sidebar a{
@@ -19,7 +20,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   box-shadow: 0px 2px 6px -3px;
-
+  font-size: inherit;
   text-transform: capitalize;
   line-height: 35px;
 }

@@ -9,20 +9,20 @@ import '../../pages/styles/forms.css';
 import NewParking from "./NewParking.modal";
 import NewStaff from "./NewStaff.modal";
 
-export default function RegisterModal({ toShow }) {
+export default function RegisterModal({ toShow, setData }) {
   const [open, setOpen] = useState(false);
   const [roleToRegister, setRoleToRegister] = useState({})
-  const {addParking} = useFetchParkings();
-  useEffect(()=>{
-    if(toShow === 'usuario') setRoleToRegister({
+  const { addParking, addParkingSlots, getParkings } = useFetchParkings();
+  useEffect(() => {
+    if (toShow === 'usuario') setRoleToRegister({
       rolId: 4,
       nombreRol: 'Cliente'
     })
-    if(toShow === 'empleado') setRoleToRegister({
+    if (toShow === 'empleado') setRoleToRegister({
       rolId: 1,
       nombreRol: 'Admin'
     })
-  },[toShow])
+  }, [toShow])
 
   //Para registrar usuario y personal
   const nombre = useRef('');
@@ -84,13 +84,33 @@ export default function RegisterModal({ toShow }) {
         horarioServicio: `${horaEntrada.current.value} - ${horaSalida.current.value}`,
         tarifa: parseInt(tarifa.current.value),
         // cantidadDeCupos: parseInt(cupos.current.value),
-        ubicacion:{
+        ubicacion: {
           ciudad: ciudad.current.value,
           direccion: direccion.current.value
         }
       }
-      console.log(datos);
-      addParking(datos);
+      addParking(datos)
+        .then((data) => {
+          const espacios = [];
+          const cantCupos = parseInt(cupos.current.value);
+          for (let i = 0; i < cantCupos; i++) {
+            espacios.push({
+              codigoEspacioParqueadero: `${nombreParqueadero.current.value} P${i}`,
+              parqueadero: {
+                idParqueadero: data.idParqueadero
+              }
+            })
+          }
+          addParkingSlots(espacios)
+            .then((res) => {
+              if (res) {
+                getParkings()
+                  .then((data) => {
+                    setData(data)
+                  })
+              }
+            })
+        });
     }
 
     if (toShow === 'empleado') {
@@ -142,16 +162,16 @@ export default function RegisterModal({ toShow }) {
               fidelizacion
             }}
           /> : null}
-          { toShow === 'empleado' ? <NewStaff 
-          handleSubmit={handleSubmit}
-            refs={{ 
-              nombre, 
-              apellido, 
-              correo, 
-              contrasena, 
+          {toShow === 'empleado' ? <NewStaff
+            handleSubmit={handleSubmit}
+            refs={{
+              nombre,
+              apellido,
+              correo,
+              contrasena,
               parqueaderoAsignado
-            }}/> 
-          : null}
+            }} />
+            : null}
         </>
       </Modal.Content>
     </Modal>

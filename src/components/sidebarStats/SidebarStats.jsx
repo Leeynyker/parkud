@@ -1,6 +1,6 @@
 
 import { Link } from "wouter"
-import './sidebarStats.css';
+import '../sidebar/sidebar.css';
 import { useContext } from "react";
 import LoggedContext from "../../context/Logged.context";
 
