@@ -1,0 +1,5 @@
+.stats{
+  /* background-color: fuchsia; */
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+}
