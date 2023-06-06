@@ -11,7 +11,7 @@ export default function useFetchAPI() {
     const res = await axios.post(ENDPOINT + '/usuario/guardar/', datos)
       .then((response) => {
         console.log(response);
-        if (response.status = 200) return true;
+        if (response.status === 200) return true;
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +23,7 @@ export default function useFetchAPI() {
   const getUser = async (datos) => {
     return axios.post(ENDPOINT + '/generar-token', datos)
       .then((response) => {
-        if (response.status = 200) {
+        if (response.status === 200) {
           const token = response.data.token;
           setToken(response);
           localStorage.setItem('token', token)
@@ -38,6 +38,22 @@ export default function useFetchAPI() {
       })
   }
 
+  async function deleteUser(userId){
+    return axios({
+      method: 'delete',
+      url: ENDPOINT + '/usuario/eliminarPorId/' + userId,
+      headers:{
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    }).then((response) => {
+      if (response.status === 200) return response.data
+      return false;
+    }).catch((error) => {
+      console.log(error);
+      return false;
+    })
+  }
+
   const getUsers = async () => {
     return axios({
       method: 'get',
@@ -47,8 +63,8 @@ export default function useFetchAPI() {
       }
     })
       .then((response) => {
-        if (response.status = 200) {
-          return response.data.filter((obj) => obj.rol.rolId === 3);
+        if (response.status === 200) {
+          return response.data.filter((obj) => obj.rol.rolId === 4);
         }
         return false;
 
@@ -68,7 +84,7 @@ export default function useFetchAPI() {
       }
     })
       .then((response) => {
-        if (response.status = 200) {
+        if (response.status === 200) {
           return response.data.filter((obj) => obj.rol.rolId === 1);
         }
         return false;
@@ -88,7 +104,7 @@ export default function useFetchAPI() {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       }
     }).then((response) => {
-      if (response.status = 200) {
+      if (response.status === 200) {
         const correo = response.data.username;
         const rol = response.data.rol.nombreRol;
         const puntos = response.data.puntosAcumulados;
@@ -105,5 +121,5 @@ export default function useFetchAPI() {
       })
   }
 
-  return { registerUser, getUser, getDataUser, getUsers, getAdmins }
+  return { registerUser, getUser, getDataUser, getUsers, getAdmins, deleteUser }
 }
