@@ -10,7 +10,7 @@
 }
 
 .degraded-orange{
-  background: linear-gradient(to top, var(--color-principal), var(--color-secondary));
+  background: linear-gradient(to top, var(--color-principal), var(--color-secondary)) !important;
 }
 
 .degraded-black{

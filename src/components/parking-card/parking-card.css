@@ -40,3 +40,19 @@
   border: 1px solid var(--font-color-principal);
   overflow: hidden;
 }
+
+.custom-modal {
+  width: 9900px;
+  background-color: brown;
+}
+.button-booking {
+  cursor: pointer;
+  display: inline-block;
+  width: 150px;
+  outline: 0;
+  border: none;
+  color: rgb(253, 253, 253);
+  font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+  padding: 5px;
+  font-weight: 700;
+}
