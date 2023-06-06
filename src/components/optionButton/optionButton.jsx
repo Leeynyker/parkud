@@ -2,12 +2,13 @@ import { ButtonGroup, Button, Whisper, Popover, Dropdown, IconButton } from 'rsu
 import ArrowDownIcon from '@rsuite/icons/ArrowDown';
 import React, { useState } from 'react';
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
 
 
 
-export default function SidebarStats() {
 
+export default function OptionButton() {
+
+    const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
     const [action, setAction] = React.useState(0);
 
     return (
