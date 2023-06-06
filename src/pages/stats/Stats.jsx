@@ -1,13 +1,15 @@
-import DashboardList from "../../components/dashboard-list/DashboardList";
+
 import Navbar from "../../components/header/Navbar";
-import Sidebar from "../../components/sidebar/Sidebar";
+
 import SidebarStats from "../../components/sidebarStats/SidebarStats"
+
+
 import '../styles/adminDashboard.css'
 import '../styles/forms-inner.css'
 import BarChart from "../../components/charts/bar-chart/BarChart";
 import PieChart from "../../components/charts/pie-chart/PieChart";
 
-import React, { useEffect , useState } from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -45,8 +47,8 @@ export default function Stats( ) {
 
             data: barvalues,
             backgroundColor: ["#FF8000"],
-            borderWidth: 2, 
-            borderColor: "white" 
+            borderWidth: 3, 
+            borderColor: ["#f2f2f2"]
         }]
     })
     
@@ -56,8 +58,8 @@ export default function Stats( ) {
           label: "Porcentaje de Ocupación por Día",
           data: pievalues,
           backgroundColor: ["#FF8000"],
-          borderWidth: 2, 
-          borderColor: "white" 
+          borderWidth: 1, 
+          borderColor: ["#f2f2f2"]
       }]
   })
 
@@ -69,7 +71,7 @@ export default function Stats( ) {
               <div >
                   
 
-              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', padding:"10px"  }} >
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft:"100px", padding:"10px"  }} >
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '600px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
                   <div >Ingresos Movistar Arena | 01/01/2023 - 05/02/2023</div>
