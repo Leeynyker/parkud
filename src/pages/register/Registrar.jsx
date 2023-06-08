@@ -33,8 +33,16 @@ export default function Register() {
     //Contraseña
     if (!contrasena.current.value) {
       errors.contrasenia = "La contraseña es requerida";
-    } else if (contrasena.current.value.length < 8) {
-      errors.contrasenia = "La contraseña debe tener al menos 8 caracteres";
+    } else if (contrasena.current.value.length < 5) {
+      errors.contrasenia = "La contraseña debe tener al menos 5 caracteres";
+    } else if (contrasena.current.value.length > 8) {
+      errors.contrasenia = "La contraseña debe tener maximo 8 caracteres";
+    } else if (!/\d/.test(contrasena.current.value)) {
+      errors.contrasenia = "La contraseña debe contener al menos un número";
+    } else if (!/[A-Z]/.test(contrasena.current.value)) {
+      errors.contrasenia = "La contraseña debe contener al menos una letra mayúscula";
+    } else if (!/[a-z]/.test(contrasena.current.value)) {
+      errors.contrasenia = "La contraseña debe contener al menos una letra minúscula";
     }
     //Placa
     if (!placaVehiculo.current.value) {
