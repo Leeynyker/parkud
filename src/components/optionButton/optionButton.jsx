@@ -12,6 +12,8 @@ export default function OptionButton({data, callback }) {
         console.log("Datos enviados:", callbackData);
         callback(callbackData);
       };
+    
+      
 
 
     const options = data.map((item) => item.nombreParqueadero);
@@ -28,13 +30,15 @@ export default function OptionButton({data, callback }) {
                     const handleSelect = eventKey => {
                         onClose();
                         setAction(eventKey);
-                        sendData(eventKey);
+
                         console.log(eventKey);
+                        sendData(eventKey);
                     };
                     return (
                         <Popover ref={ref} className={className} style={{ left, top }} full>
                         <Dropdown.Menu onSelect={handleSelect}>
                             {options.map((item, index) => (
+                                
                             <Dropdown.Item key={index} eventKey={index}>
                                 {item}
                             </Dropdown.Item>

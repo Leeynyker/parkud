@@ -7,6 +7,7 @@ import { Button } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 
 import React, { useState } from 'react';
+import eventManager from '../../hooks/eventManager';
 
 import OptionButton from "../optionButton/OptionButton"
 import { map } from "leaflet";
@@ -18,17 +19,30 @@ const { allowedMaxDays, allowedDays, allowedRange, beforeToday, afterToday, comb
 
 export default function SidebarStats({sidebarData}) {
 
-  const [callDataExterno, setcallDataExterno] = useState(null);
+  const [callDataExterno, setcallDataExterno] = useState();
 
+  var idParqueaderoSeleccionado = null;
   const nombresParqueadero = sidebarData.map((item) => item.nombreParqueadero);
   console.log("hey2: "+nombresParqueadero)
   
   const handleCallback = (callDataInterno) => {
+    
     setcallDataExterno(callDataInterno);
-
+    
     // Hacer algo con los datos recibidos del componente hijo
-    console.log("Datos recibidos:", callDataInterno);
+    // callDataInterno Recibe el ID del parqueadero seleccionado por el componente optionButton
+
+    //console.log("Datos recibidos:", callDataInterno);
+    eventManager.emit('eventoPersonalizado', nombresParqueadero[callDataInterno]);
   };
+
+  const handleClick = () => {
+    console.log('Botón clickeado');
+    // Acciones a realizar al hacer clic en el botón
+    eventManager.emit('eventoPersonalizado', 'hola madafakas');
+    
+  };
+
 
 
   return (
@@ -47,7 +61,7 @@ export default function SidebarStats({sidebarData}) {
       <DateRangePicker shouldDisableDate ={allowedMaxDays(7)} character=' hasta ' format='dd/MM/yy' size='md' />
       <br></br>
       
-      <Button color="orange" appearance="primary">Search</Button>
+
     </section>
   )
 }

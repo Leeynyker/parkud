@@ -4,6 +4,7 @@ import Navbar from "../../components/header/Navbar";
 import SidebarStats from "../../components/sidebarStats/SidebarStats"
 
 import useFetchParkings from "../../hooks/fetchParkings";
+import eventManager from "../../hooks/eventManager";
 
 import '../styles/adminDashboard.css'
 import '../styles/forms-inner.css'
@@ -18,6 +19,25 @@ import React, { useState , useEffect} from 'react';
 
 export default function Stats( ) {
 
+  const [ventasData, setVentasData] = useState([null]);
+
+  useEffect(() => {
+    const handleCustomEvent = (data) => {
+      // Realizar acción con los datos recibidos
+      console.log('Datos consola:', data);
+      alert('Datos recibidos:'+ data);
+      setVentasData(data);
+    };
+
+    // Suscribirse al evento personalizado
+    eventManager.subscribe('eventoPersonalizado', handleCustomEvent);
+
+    // Limpiar suscripción cuando el componente se desmonte
+    return () => {
+      eventManager.unsubscribe('eventoPersonalizado', handleCustomEvent);
+    };
+  }, []);
+
     const { getParkings } = useFetchParkings();
     const [parkingData, setData] = useState([])
 
@@ -26,7 +46,7 @@ export default function Stats( ) {
     }, [])
 
 
-    const [ventasData, setVentasData] = useState([null]);
+    
 
     useEffect(() => {
       //Aqui se conecta con el backend para traer los datos de ventas
@@ -112,7 +132,7 @@ export default function Stats( ) {
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft:"100px", padding:"10px"  }} >
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '600px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div >Ingresos Brutos</div>
+                  <div >Ingresos Brutos {ventasData}</div>
                   <div style={{ padding: '4px'}}>{ventasTotales} COP</div>
                   <BarChart chartData={barChartConfig} />
 
@@ -120,7 +140,7 @@ export default function Stats( ) {
 
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '450px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div>Tasa de Ocupación</div>
+                  <div>Tasa de Ocupación {ventasData}</div>
                   <div style={{ padding: '2px'}}>{tasaOcupacion}%</div>
                   <PieChart chartData={pieChartConfig} style={{width:"50%"}}/>
 
