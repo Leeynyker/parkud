@@ -20,23 +20,39 @@ import React, { useState , useEffect} from 'react';
 export default function Stats( ) {
 
   const [ventasData, setVentasData] = useState([null]);
-
+  const [fechasData, setfechasData] = useState([null]);
+  
   useEffect(() => {
-    const handleCustomEvent = (data) => {
+    const handleParqueaderoSeleccionadoEvent = (data) => {
       // Realizar acción con los datos recibidos
-      console.log('Datos consola:', data);
-      alert('Datos recibidos:'+ data);
+      //console.log('Datos consola:', data);
+      //alert('Datos recibidos:'+ data);
       setVentasData(data);
+    };
+    const handleFechasSeleccionadasEvent = (data) => {
+      // Realizar acción con los datos recibidos
+      //console.log('Datos consola:', data);
+      //alert('Datos recibidos:'+ data);
+      setfechasData(data);
+      console.log("fechasData: "+data);
     };
 
     // Suscribirse al evento personalizado
-    eventManager.subscribe('eventoPersonalizado', handleCustomEvent);
+    eventManager.subscribe('eventoNombreParqueaderoSeleccionado', handleParqueaderoSeleccionadoEvent);
+    eventManager.subscribe('eventoFechasSeleccionadas', handleFechasSeleccionadasEvent);
 
     // Limpiar suscripción cuando el componente se desmonte
     return () => {
-      eventManager.unsubscribe('eventoPersonalizado', handleCustomEvent);
+      eventManager.unsubscribe('eventoNombreParqueaderoSeleccionado', handleParqueaderoSeleccionadoEvent);
+      eventManager.unsubscribe('eventoFechasSeleccionadas', handleFechasSeleccionadasEvent);
     };
   }, []);
+
+  
+  
+  
+
+
 
     const { getParkings } = useFetchParkings();
     const [parkingData, setData] = useState([])
@@ -45,13 +61,6 @@ export default function Stats( ) {
       getParkings().then((response) => setData(response))
     }, [])
 
-
-    
-
-    useEffect(() => {
-      //Aqui se conecta con el backend para traer los datos de ventas
-      //y guardarlos en ventasData
-    });
 
 
 
@@ -140,7 +149,7 @@ export default function Stats( ) {
 
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '450px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div>Tasa de Ocupación {ventasData}</div>
+                  <div>Tasa de Ocupación {ventasData} | {fechasData[0]} hasta {fechasData[fechasData.length-1]}</div>
                   <div style={{ padding: '2px'}}>{tasaOcupacion}%</div>
                   <PieChart chartData={pieChartConfig} style={{width:"50%"}}/>
 

@@ -21,9 +21,9 @@ export default function SidebarStats({sidebarData}) {
 
   const [callDataExterno, setcallDataExterno] = useState();
 
-  var idParqueaderoSeleccionado = null;
+  var idParqueaderoSeleccionado = null, fechaInicial = "", fechaFinal = "", fechas = [];
   const nombresParqueadero = sidebarData.map((item) => item.nombreParqueadero);
-  console.log("hey2: "+nombresParqueadero)
+  //console.log("hey2: "+nombresParqueadero)
   
   const handleCallback = (callDataInterno) => {
     
@@ -32,16 +32,45 @@ export default function SidebarStats({sidebarData}) {
     // Hacer algo con los datos recibidos del componente hijo
     // callDataInterno Recibe el ID del parqueadero seleccionado por el componente optionButton
 
-    //console.log("Datos recibidos:", callDataInterno);
-    eventManager.emit('eventoPersonalizado', nombresParqueadero[callDataInterno]);
+    //enviar el nombre del parqueadero seleccionado al componente padre usando el eventManager
+    eventManager.emit('eventoNombreParqueaderoSeleccionado', nombresParqueadero[callDataInterno]);
+
+    //envia el rango de fechas seleccionado por el cliente al componente padre usando el eventManager
+    eventManager.emit('eventoFechasSeleccionadas', fechas);
+
+
   };
 
-  const handleClick = () => {
-    console.log('Botón clickeado');
-    // Acciones a realizar al hacer clic en el botón
-    eventManager.emit('eventoPersonalizado', 'hola madafakas');
+  const calendarChange = () => {
     
+    var spanElement = document.querySelector('.rs-picker-toggle-value');
+    //console.log("sssss :"+spanElement);
+
+    if (spanElement) {
+      // Obtener fechas inicial y final
+      const contenido = spanElement.textContent;
+      const fechasArray = contenido.split("hasta");
+      fechaInicial = new Date(fechasArray[0].trim());
+      fechaFinal = new Date(fechasArray[1].trim());
+
+      // Generar todas las fechas en el rango
+      fechas = [];
+      for (let fecha = fechaInicial; fecha <= fechaFinal; fecha.setDate(fecha.getDate() + 1)) {
+        const fechaString = fecha.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit", year: "2-digit" });
+        //console.log("nueva gecha: "+fechaString);
+        fechas.push(fechaString);
+      }             
+      //console.log(typeof fechas+ "   ,fechas: "+fechas[fechas.length-1]);
+
+    } else {
+      console.log('El elemento no existe en el DOM');
+    }
+
+    
+
   };
+
+
 
 
 
@@ -52,13 +81,14 @@ export default function SidebarStats({sidebarData}) {
       <br></br>
       <br></br>
       <br></br>
+      <Link href={""}>Seleccione Fecha</Link>
+      <DateRangePicker onChange={calendarChange()} shouldDisableDate ={allowedMaxDays(7)} character=' hasta ' format='MM/dd/yy' size='md' limitStartYear={2023} />
+      
       <Link href={""}>Seleccione Parqueadero</Link>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <OptionButton data={sidebarData} callback={handleCallback} size='lg'></OptionButton>
       </div>
       
-      <Link href={""}>Seleccione Fecha</Link>
-      <DateRangePicker shouldDisableDate ={allowedMaxDays(7)} character=' hasta ' format='dd/MM/yy' size='md' />
       <br></br>
       
 
