@@ -19,11 +19,19 @@ import React, { useState , useEffect} from 'react';
 export default function Stats( ) {
 
     const { getParkings } = useFetchParkings();
-    const [data, setData] = useState([])
+    const [parkingData, setData] = useState([])
 
     useEffect(() => {
       getParkings().then((response) => setData(response))
     }, [])
+
+
+    const [ventasData, setVentasData] = useState([null]);
+
+    useEffect(() => {
+      
+    });
+
 
 
 
@@ -77,7 +85,7 @@ export default function Stats( ) {
     <>
             <Navbar />
             <div className="dashboard-body">
-              <SidebarStats sidebarData={data}/>
+              <SidebarStats sidebarData={parkingData}/>
               <div >
                   
 

@@ -32,13 +32,20 @@ export default function SidebarStats({sidebarData}) {
 
 
   return (
-    <section className="sidebar">
-      <Link href={""}>{nombresParqueadero[callDataExterno]}</Link>
+    <section className="sidebar" >
       <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <Link href={""}>Parqueadero</Link>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <OptionButton data={sidebarData} callback={handleCallback} size="lg"></OptionButton>
+      </div>
+      
       <Link href={""}>Fecha</Link>
       <DateRangePicker disabledDate={allowedMaxDays(7)} character=' hasta ' format='dd/MM/yy' size='md' />
-      <Link href={""}>Parqueadero</Link>
-      <OptionButton data={sidebarData} callback={handleCallback}></OptionButton>
+      <br></br>
       
       <Button color="orange" appearance="primary">Search</Button>
     </section>
