@@ -75,6 +75,27 @@ export default function useFetchAPI() {
       })
   }
 
+  const getUserBookings = async () => {
+    return axios({
+      method: 'get',
+      url: `${ENDPOINT}/detalleDeReserva/listarSegunIdUsuario/`+localStorage.getItem('id'),
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('token')
+      }
+    })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.data;
+        }
+        return false;
+
+      })
+      .catch((error) => {
+        console.log(error);
+        return false
+      })
+  }
+
   const getAdmins = async () => {
     return axios({
       method: 'get',
@@ -124,5 +145,5 @@ export default function useFetchAPI() {
       })
   }
 
-  return { registerUser, getUser, getDataUser, getUsers, getAdmins, deleteUser }
+  return { registerUser, getUser, getDataUser, getUsers, getAdmins, deleteUser, getUserBookings }
 }
