@@ -3,19 +3,29 @@ import Navbar from "../../components/header/Navbar";
 
 import SidebarStats from "../../components/sidebarStats/SidebarStats"
 
+import useFetchParkings from "../../hooks/fetchParkings";
 
 import '../styles/adminDashboard.css'
 import '../styles/forms-inner.css'
 import BarChart from "../../components/charts/bar-chart/BarChart";
 import PieChart from "../../components/charts/pie-chart/PieChart";
 
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 
 
 
 
 
 export default function Stats( ) {
+
+    const { getParkings } = useFetchParkings();
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+      getParkings().then((response) => setData(response))
+    }, [])
+
+
 
     const barChartData = {
       "01/02/2023": "80000",
@@ -67,7 +77,7 @@ export default function Stats( ) {
     <>
             <Navbar />
             <div className="dashboard-body">
-              <SidebarStats />
+              <SidebarStats sidebarData={data}/>
               <div >
                   
 
