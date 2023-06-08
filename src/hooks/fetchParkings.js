@@ -1,44 +1,61 @@
 import axios from "axios";
 import { ENDPOINT } from "../util/api";
 
-export default function useFetchParkings(){
+export default function useFetchParkings() {
   const token = localStorage.getItem('token');
 
-  const getSpaceParking = async function(id){
+  const getVentasParking = async function (idParking, fecha) {
+    const url = `${ENDPOINT}/estadistica/obtenerTotalDeVentasSegunIdParqueaderoYFecha/${idParking}/${fecha}`;
+    const response = axios({
+      method: "GET",
+      url: url,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log(response.data);
+        return response.data;
+      }
+    })
+    return response;
+  }
+
+  const getSpaceParking = async function (id) {
     const url = `${ENDPOINT}/parqueadero/listarEspaciosDeUnParqueadero/${id}`;
-    const response  = axios({
+    const response = axios({
       method: "GET",
       url: url,
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then((response) => {
-      if(response.status === 200){
+      if (response.status === 200) {
         return response.data;
       }
     })
     return response;
   }
 
-  const getParkings = async function(){
+  const getParkings = async function () {
     const url = `${ENDPOINT}/parqueadero/listarParqueaderos/`;
-    const response  = axios({
+    const response = axios({
       method: "GET",
       url: url,
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then((response) => {
-      if(response.status === 200){
+      if (response.status === 200) {
         return response.data;
       }
     })
     return response;
   }
 
-  const addReserva = async function(data){
+  const addReserva = async function (data) {
     const url = `${ENDPOINT}/detalleDeReserva/guardar/`;
-    const response  = axios({
+    const response = axios({
       method: "post",
       url: url,
       data: data,
@@ -46,31 +63,31 @@ export default function useFetchParkings(){
         Authorization: `Bearer ${token}`
       }
     }).then((response) => {
-      if(response.status === 200){
+      if (response.status === 200) {
         return response.data;
       }
     })
     return response;
   }
 
-  const getBookings = async function(){
+  const getBookings = async function () {
     const url = `${ENDPOINT}/detalleDeReserva/listarTodos/`;
-    const response  = axios({
+    const response = axios({
       method: "GET",
       url: url,
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).then((response) => {
-      if(response.status === 200){
+      if (response.status === 200) {
         return response.data;
       }
     })
     return response;
   }
-  const addParking = async function(data){
+  const addParking = async function (data) {
     const url = `${ENDPOINT}/parqueadero/guardar/`;
-    const response  = axios({
+    const response = axios({
       method: "post",
       url: url,
       data: data,
@@ -78,14 +95,14 @@ export default function useFetchParkings(){
         Authorization: `Bearer ${token}`
       }
     }).then((response) => {
-      if(response.status === 200){
+      if (response.status === 200) {
         return response.data;
       }
     })
     return response;
   }
 
-  const addParkingSlots = async function(data){
+  const addParkingSlots = async function (data) {
     const url = `${ENDPOINT}/espacioDeParqueadero/guardar/`;
     return axios({
       method: 'post',
@@ -102,11 +119,11 @@ export default function useFetchParkings(){
     })
   }
 
-  async function deleteParking(id){
+  async function deleteParking(id) {
     return axios({
       method: 'delete',
       url: ENDPOINT + '/parqueadero/eliminar/' + id,
-      headers:{
+      headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token')
       }
     }).then((response) => {
@@ -118,5 +135,5 @@ export default function useFetchParkings(){
     })
   }
 
-  return { getParkings, addParking, deleteParking, addParkingSlots, getSpaceParking, addReserva, getBookings}
+  return { getVentasParking, getParkings, addParking, deleteParking, addParkingSlots, getSpaceParking, addReserva, getBookings }
 }

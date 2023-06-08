@@ -19,7 +19,7 @@ import React, { useState , useEffect} from 'react';
 
 export default function Stats( ) {
 
-  const [ventasData, setVentasData] = useState([null]);
+  const [nombreParqueadero, setnombreParqueadero] = useState([null]);
   const [fechasData, setfechasData] = useState([null]);
   
   useEffect(() => {
@@ -27,14 +27,14 @@ export default function Stats( ) {
       // Realizar acción con los datos recibidos
       //console.log('Datos consola:', data);
       //alert('Datos recibidos:'+ data);
-      setVentasData(data);
+      setnombreParqueadero(data);
     };
     const handleFechasSeleccionadasEvent = (data) => {
       // Realizar acción con los datos recibidos
       //console.log('Datos consola:', data);
       //alert('Datos recibidos:'+ data);
       setfechasData(data);
-      console.log("fechasData: "+data);
+      //console.log("fechasData: "+data);
     };
 
     // Suscribirse al evento personalizado
@@ -55,10 +55,13 @@ export default function Stats( ) {
 
 
     const { getParkings } = useFetchParkings();
-    const [parkingData, setData] = useState([])
+    const { getVentasParking } = useFetchParkings();
+    const [parkingData, setparkingData] = useState([])
+    const [ventasData, setVentasData] = useState([]);
 
     useEffect(() => {
-      getParkings().then((response) => setData(response))
+      getParkings().then((response) => setparkingData(response));
+      getVentasParking("1","2023-01-01").then((response) => setVentasData(response));
     }, [])
 
 
@@ -141,7 +144,7 @@ export default function Stats( ) {
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft:"100px", padding:"10px"  }} >
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '600px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div >Ingresos Brutos {ventasData}</div>
+                  <div >Ingresos Brutos {nombreParqueadero}</div>
                   <div style={{ padding: '4px'}}>{ventasTotales} COP</div>
                   <BarChart chartData={barChartConfig} />
 
@@ -149,7 +152,7 @@ export default function Stats( ) {
 
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '450px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div>Tasa de Ocupación {ventasData} | {fechasData[0]} hasta {fechasData[fechasData.length-1]}</div>
+                  <div>Tasa de Ocupación {nombreParqueadero}</div>
                   <div style={{ padding: '2px'}}>{tasaOcupacion}%</div>
                   <PieChart chartData={pieChartConfig} style={{width:"50%"}}/>
 
