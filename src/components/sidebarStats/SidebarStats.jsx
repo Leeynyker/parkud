@@ -9,7 +9,7 @@ import 'rsuite/dist/rsuite.min.css';
 import React, { useState } from 'react';
 import eventManager from '../../hooks/eventManager';
 
-import OptionButton from "../optionButton/OptionButton"
+import OptionButton from "../botonOpciones/BotonOpciones"
 import { map } from "leaflet";
 
 const { allowedMaxDays, allowedDays, allowedRange, beforeToday, afterToday, combine } =
