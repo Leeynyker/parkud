@@ -55,6 +55,7 @@ export default function ParkingCard({
             <Modal.Header>{parqueadero.nombreParqueadero}</Modal.Header>
             <Modal.Content>
               <Booking
+                cerrarModal={() => setModalOpen(false)}
                 nombre={parqueadero.nombreParqueadero}
                 direccion={parqueadero.ubicacion.direccion}
                 cupos={parqueadero.cupos}

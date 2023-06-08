@@ -2,13 +2,15 @@ import React from "react";
 import { Button, Form } from "semantic-ui-react";
 import "./booking.css";
 import useFetchParkings from "../../hooks/fetchParkings";
+import useFetchAPI from "../../hooks/fetchUsers";
 // import {getSpa}
 import { useEffect, useState } from "react";
 // import { Button, Form } from 'semantic-ui-react';
 
-export default function Booking({ direccion, cupos, tarifa, horario, id }) {
+export default function Booking({ direccion, cupos, tarifa, horario, id, cerrarModal }) {
   const [spaceParking, setSpaceParkings] = useState([]);
   const { getSpaceParking, addReserva } = useFetchParkings();
+  const { getDataUser } = useFetchAPI();
   const [fecha, setFecha] = useState("");
   const [horaEntrada, setHoraEntrada] = useState("");
   const [horaSalida, setHoraSalida] = useState("");
@@ -35,8 +37,11 @@ export default function Booking({ direccion, cupos, tarifa, horario, id }) {
       },
     };
     addReserva(reserva).then((response) => {
+      cerrarModal();
+      getDataUser();
       console.log(response);
     });
+
   };
   return (
     <div>

@@ -129,6 +129,7 @@ export default function RegisterModal({ toShow, setData }) {
       console.log(datos);
       registerUser(datos)
     }
+    setOpen(false);
   }
 
   return (

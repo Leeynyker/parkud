@@ -6,6 +6,7 @@ import Register from './pages/register/Registrar';
 import Home from './pages/home/Home';
 import AdminDashboard from './pages/admin-dashboard/AdminDashboard'
 import ParkingLot from './pages/parking/ParkingLot';
+import History from './pages/history/History';
 import { LoggedContextProvider } from './context/Logged.context';
 import { AdminRequired, UserRequired } from './components/auth-required/authRequired';
 
@@ -37,10 +38,10 @@ function App() {
             </AdminRequired>}
         </Route>
         <Route path='/my'>
-          <h1>My Page</h1>
+          <History />
         </Route>
         <Route path='/history'>
-          <h1>My history</h1>
+          <History />
         </Route>
         <Route path='/parking/:parkingId'>
           {params => <ParkingLot parkingId={params.parkingId} />}

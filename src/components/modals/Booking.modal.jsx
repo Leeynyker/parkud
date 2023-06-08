@@ -13,11 +13,10 @@ export default function BookingModal({modalOpen, setModalOpen, id}){
   }, [id])
 
   useEffect(()=>{
+    console.log(bookings);
     const temp = bookings.filter((data) => data.espacioDeParqueadero.parqueadero.idParqueadero === id)
-    console.log(temp);
     const data = temp.map((element) => {
       let fechaTemp = element.fecha.split('T')[0]
-      console.log(fechaTemp);
       return [element.usuario.username, element.espacioDeParqueadero.codigoEspacioParqueadero, `${fechaTemp} / ${element.horaEntrada}-${element.horaSalida}`]
     })
     setFiltered(data)
