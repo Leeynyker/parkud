@@ -19,7 +19,7 @@ import React, { useState , useEffect} from 'react';
 
 export default function Stats( ) {
 
-  const [nombreParqueadero, setnombreParqueadero] = useState([null]);
+  const [nombreParking, setnombreParqueadero] = useState([null]);
   const [fechasData, setfechasData] = useState([null]);
   
   useEffect(() => {
@@ -28,6 +28,14 @@ export default function Stats( ) {
       //console.log('Datos consola:', data);
       //alert('Datos recibidos:'+ data);
       setnombreParqueadero(data);
+      const parqueadero = parkingData.find(item => item.nombreParqueadero === nombreParking);
+                      
+      if (parqueadero) {
+        const idParqueadero = parqueadero.idParqueadero;
+        console.log("id :"+idParqueadero);
+      } else {
+        console.log("Parqueadero no encontrado");
+      }   
     };
     const handleFechasSeleccionadasEvent = (data) => {
       // Realizar acción con los datos recibidos
@@ -61,7 +69,9 @@ export default function Stats( ) {
 
     useEffect(() => {
       getParkings().then((response) => setparkingData(response));
-      getVentasParking("1","2023-01-01").then((response) => setVentasData(response));
+      getVentasParking("7","2023-06-05").then((response) => setVentasData(response));
+      console.log("ventasData: "+ventasData);
+      console.log("response: "+JSON.stringify(parkingData));
     }, [])
 
 
@@ -144,7 +154,7 @@ export default function Stats( ) {
               <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginLeft:"100px", padding:"10px"  }} >
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '600px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div >Ingresos Brutos {nombreParqueadero}</div>
+                  <div >Ingresos Brutos {nombreParking}</div>
                   <div style={{ padding: '4px'}}>{ventasTotales} COP</div>
                   <BarChart chartData={barChartConfig} />
 
@@ -152,7 +162,7 @@ export default function Stats( ) {
 
                 <div style={{ margin:"10px", padding: '20px', width:"90%", height: '450px', background: 'white', borderRadius: '10px', border: '1px solid gray', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'  }}>
                   
-                  <div>Tasa de Ocupación {nombreParqueadero}</div>
+                  <div>Tasa de Ocupación {nombreParking}</div>
                   <div style={{ padding: '2px'}}>{tasaOcupacion}%</div>
                   <PieChart chartData={pieChartConfig} style={{width:"50%"}}/>
 

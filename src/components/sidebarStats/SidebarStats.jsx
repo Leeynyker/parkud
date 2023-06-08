@@ -35,6 +35,8 @@ export default function SidebarStats({sidebarData}) {
     //enviar el nombre del parqueadero seleccionado al componente padre usando el eventManager
     eventManager.emit('eventoNombreParqueaderoSeleccionado', nombresParqueadero[callDataInterno]);
 
+   
+
     //envia el rango de fechas seleccionado por el cliente al componente padre usando el eventManager
     eventManager.emit('eventoFechasSeleccionadas', fechas);
 
@@ -82,7 +84,7 @@ export default function SidebarStats({sidebarData}) {
       <br></br>
       <br></br>
       <Link href={""}>Seleccione Fecha</Link>
-      <DateRangePicker onChange={calendarChange()} shouldDisableDate ={allowedMaxDays(7)} character=' hasta ' format='MM/dd/yy' size='md' limitStartYear={2023} />
+      <DateRangePicker onChange={calendarChange()} shouldDisableDate ={allowedMaxDays(7)} character=' hasta ' format='yy-dd-MM' size='md' limitStartYear={2023} />
       
       <Link href={""}>Seleccione Parqueadero</Link>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
